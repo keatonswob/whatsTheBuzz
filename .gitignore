@@ -1,0 +1,42 @@
+#################
+# OS X temp files
+#################
+
+.DS_Store
+.Trashes
+*.swp
+*.lock
+
+###################
+# Xcode build files
+###################
+
+DerivedData/
+build/
+
+#################################################################################################
+# Xcode private settings (window sizes, bookmarks, breakpoints, custom executables, smart groups)
+#################################################################################################
+
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+############################################################################################
+# Deprecated classes would go here, but we don't want that stuff tracked by Git 
+############################################################################################
+
+*.moved-aside
+
+############################################################################################
+# Used by Xcode to determine which VCS systems are in use for a workspace, but has machine
+# specific values, so will be changed after each commit, esp. if shared between multiple
+# developers. If workspaces are used, this should probably be tracked, otherwise ignored.
+############################################################################################
+
+*.xccheckout
