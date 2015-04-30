@@ -36,6 +36,7 @@
 		5AFB723E1AF123A2006C0CB4 /* WebSiteCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB723D1AF123A2006C0CB4 /* WebSiteCollectionViewController.m */; };
 		5AFB72411AF15E19006C0CB4 /* WebViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB72401AF15E19006C0CB4 /* WebViewCollectionViewCell.m */; };
 		5AFB72471AF17E7C006C0CB4 /* BigWebSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB72461AF17E7C006C0CB4 /* BigWebSiteViewController.m */; };
+		5AFB724B1AF29C3D006C0CB4 /* WebsiteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB724A1AF29C3D006C0CB4 /* WebsiteTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		5AFB72401AF15E19006C0CB4 /* WebViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCollectionViewCell.m; sourceTree = "<group>"; };
 		5AFB72451AF17E7C006C0CB4 /* BigWebSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigWebSiteViewController.h; sourceTree = "<group>"; };
 		5AFB72461AF17E7C006C0CB4 /* BigWebSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigWebSiteViewController.m; sourceTree = "<group>"; };
+		5AFB72491AF29C3D006C0CB4 /* WebsiteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteTableViewCell.h; sourceTree = "<group>"; };
+		5AFB724A1AF29C3D006C0CB4 /* WebsiteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 				5AFB72461AF17E7C006C0CB4 /* BigWebSiteViewController.m */,
 				5AFB723F1AF15E19006C0CB4 /* WebViewCollectionViewCell.h */,
 				5AFB72401AF15E19006C0CB4 /* WebViewCollectionViewCell.m */,
+				5AFB72491AF29C3D006C0CB4 /* WebsiteTableViewCell.h */,
+				5AFB724A1AF29C3D006C0CB4 /* WebsiteTableViewCell.m */,
 				5AFB71DD1AEE8712006C0CB4 /* Main.storyboard */,
 				5AFB71E01AEE8712006C0CB4 /* Images.xcassets */,
 				5AFB71E21AEE8712006C0CB4 /* LaunchScreen.xib */,
@@ -378,6 +383,7 @@
 				5AFB723E1AF123A2006C0CB4 /* WebSiteCollectionViewController.m in Sources */,
 				5AFB72321AEFECEE006C0CB4 /* BAVPlistNode.m in Sources */,
 				5AFB72301AEFECEE006C0CB4 /* STTwitterOSRequest.m in Sources */,
+				5AFB724B1AF29C3D006C0CB4 /* WebsiteTableViewCell.m in Sources */,
 				5AFB72291AEFECEE006C0CB4 /* NSString+STTwitter.m in Sources */,
 				5AFB722A1AEFECEE006C0CB4 /* STHTTPRequest+STTwitter.m in Sources */,
 				5AFB71D91AEE8712006C0CB4 /* AppDelegate.m in Sources */,
