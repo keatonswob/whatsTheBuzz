@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WebSiteCollectionViewController.h"
+#import "ResultsTableViewController.h"
 
 @interface Bing : NSObject
 {
@@ -16,7 +17,8 @@
     BOOL isTitle;
 }
 @property (nonatomic) NSMutableArray *results;
-@property (nonatomic)id<WebsiteVCDelegate> delegate;
+//@property (nonatomic)id<WebsiteVCDelegate> delegate;
+@property (nonatomic)id<ResultsVCDelegate> delegate;
 
 
 - (id) init;

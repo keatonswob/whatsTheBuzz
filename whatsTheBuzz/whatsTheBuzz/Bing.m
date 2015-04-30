@@ -125,11 +125,45 @@
         NSLog(@"Download Successful.");
         NSDictionary *userInfo = [NSJSONSerialization JSONObjectWithData:recieveData options:0 error:nil];
         //[self.results addObject:userInfo];
+        
         [self.delegate getResults:userInfo];
         //[self cancel];
     }
     NSLog(@"%@", self.results);
     
+    
+    
+}
+
+- (void)searchWeb:(NSString *)queryString
+{
+    
+    
+    
+    NSString *format = @"json";
+    
+    NSString *market = @"'en-us'";
+    
+    NSInteger top = 4;
+    
+    NSMutableString *fullUri = [NSMutableString stringWithCapacity:256];
+    
+    [fullUri appendString:_rootUrl];
+    
+    [fullUri appendFormat:@"Web?$format=%@", format];
+    
+    [fullUri appendFormat:@"&Query='%@'",
+     
+     [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [fullUri appendFormat:@"&Market=%@",
+     
+     [market stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [fullUri appendFormat:@"&$top=%ld", (long)top];
+    
+    
+    [self bingSave:fullUri];
     
     
 }

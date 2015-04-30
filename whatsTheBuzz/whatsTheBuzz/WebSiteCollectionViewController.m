@@ -32,8 +32,8 @@ static NSString * const reuseIdentifier = @"Cell";
 //    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"WebCell"];
     
     Bing *bing = [[Bing alloc] init];
-    bing.delegate = self;
-    [bing search:self.queryString];
+    //bing.delegate = self;
+  //  [bing search:self.queryString];
     
     
     

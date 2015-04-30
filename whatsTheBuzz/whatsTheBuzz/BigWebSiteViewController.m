@@ -23,6 +23,8 @@
     NSURL *nsurl=[NSURL URLWithString: self.siteUrl];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [webView loadRequest:nsrequest];
+    
+    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning {

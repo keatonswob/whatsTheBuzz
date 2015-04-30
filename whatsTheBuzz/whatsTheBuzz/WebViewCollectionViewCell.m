@@ -24,6 +24,7 @@
         self.webView = [[WKWebView alloc] initWithFrame:self.frame configuration:theConfiguration];
         self.webView.navigationDelegate = self;
         
+        
     }
     return  self;
 }

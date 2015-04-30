@@ -10,6 +10,7 @@
 #import "TwitterTrends.h"
 #import "STTwitter.h"
 #import "WebSiteCollectionViewController.h"
+#import "ResultsTableViewController.h"
 
 @interface TrendsTableViewController ()
 
@@ -103,15 +104,15 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"WebSiteSegue"])
+    if ([segue.identifier isEqualToString:@"ResultsSegue"])
     {
-        WebSiteCollectionViewController *webCollectionVC = [segue destinationViewController];
+        ResultsTableViewController *resultsVC = [segue destinationViewController];
         
         UITableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         NSString *query = self.trending[indexPath.row];
         NSLog(@"%@", query);
-        webCollectionVC.queryString = query;
+        resultsVC.queryString = query;
         
         
     }
