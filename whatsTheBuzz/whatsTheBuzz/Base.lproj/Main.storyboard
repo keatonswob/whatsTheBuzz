@@ -11,7 +11,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fp5-Wg-h6Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrendCell" textLabel="Sdz-vo-5nK" style="IBUITableViewCellStyleDefault" id="ocw-4N-Z8p">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -26,6 +26,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="6zp-Z8-4NK" kind="show" identifier="ResultsSegue" id="Bx0-iw-WtV"/>
                                 </connections>
@@ -90,7 +91,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgh-As-sBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="416"/>
+            <point key="canvasLocation" x="1930" y="-372"/>
         </scene>
         <!--Results Table View Controller-->
         <scene sceneID="feN-rt-zX9">
@@ -136,6 +137,7 @@
                                         <constraint firstItem="X3e-Qu-ixK" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="8" id="qyO-dO-9bF"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="descripLabel" destination="KpN-JZ-nla" id="Obm-Pg-laP"/>
                                     <outlet property="siteNameLabel" destination="X3e-Qu-ixK" id="Hcu-51-Mnf"/>
@@ -152,7 +154,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcQ-xb-dYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="1144"/>
+            <point key="canvasLocation" x="1930" y="416"/>
         </scene>
         <!--Big Web Site View Controller-->
         <scene sceneID="Hyg-gE-hua">

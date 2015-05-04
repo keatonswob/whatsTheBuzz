@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7B728E1AF3C4860040C831 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B728D1AF3C4860040C831 /* NetworkManager.m */; };
 		5AFB71D61AEE8712006C0CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB71D51AEE8712006C0CB4 /* main.m */; };
 		5AFB71D91AEE8712006C0CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB71D81AEE8712006C0CB4 /* AppDelegate.m */; };
 		5AFB71DF1AEE8712006C0CB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFB71DD1AEE8712006C0CB4 /* Main.storyboard */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A7B728C1AF3C4860040C831 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		5A7B728D1AF3C4860040C831 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		5AFB71D01AEE8712006C0CB4 /* whatsTheBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatsTheBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFB71D41AEE8712006C0CB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AFB71D51AEE8712006C0CB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				5AFB71FA1AEE9739006C0CB4 /* Bing.m */,
 				5AFB72021AEFD20E006C0CB4 /* TwitterTrends.h */,
 				5AFB72031AEFD20E006C0CB4 /* TwitterTrends.m */,
+				5A7B728C1AF3C4860040C831 /* NetworkManager.h */,
+				5A7B728D1AF3C4860040C831 /* NetworkManager.m */,
 			);
 			name = "APi Calls";
 			sourceTree = "<group>";
@@ -386,6 +391,7 @@
 				5AFB722C1AEFECEE006C0CB4 /* STTwitterAppOnly.m in Sources */,
 				5AFB72341AEFECEE006C0CB4 /* STHTTPRequest.m in Sources */,
 				5AFB722F1AEFECEE006C0CB4 /* STTwitterOS.m in Sources */,
+				5A7B728E1AF3C4860040C831 /* NetworkManager.m in Sources */,
 				5AFB723E1AF123A2006C0CB4 /* WebSiteCollectionViewController.m in Sources */,
 				5AFB72321AEFECEE006C0CB4 /* BAVPlistNode.m in Sources */,
 				5AFB72301AEFECEE006C0CB4 /* STTwitterOSRequest.m in Sources */,

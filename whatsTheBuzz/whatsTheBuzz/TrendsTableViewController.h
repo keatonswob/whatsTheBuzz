@@ -14,6 +14,12 @@
 
 @end
 
-@interface TrendsTableViewController : UITableViewController<TwitterTrendsDelegate>
+@protocol OtherTrendsDelegate
+
+-(void)addOtherTrends:(NSMutableArray *)otherTrends;
+
+@end
+
+@interface TrendsTableViewController : UITableViewController<TwitterTrendsDelegate, OtherTrendsDelegate>
 
 @end

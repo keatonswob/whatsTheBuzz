@@ -26,7 +26,6 @@
 {
     if (self = [super init])
     {
-        self.results = [[NSMutableArray alloc] init];
         busy = NO;
         _accountKey = @"uCGYPtBtCx+XXGL/7OCw0e4Q0Y9gVAVKGPsBP/60Iw4=";
         _rootUrl = @"https://api.datamarket.azure.com/Bing/Search/";
@@ -62,6 +61,7 @@
      [market stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     [fullUri appendFormat:@"&$top=%ld", (long)top];
+    
     
     
     [self bingSave:fullUri];
@@ -114,6 +114,7 @@
     }
     else
     {
+        [recieveData setLength:0];
         [recieveData appendData:data];
     }
 }
@@ -129,7 +130,6 @@
         [self.delegate getResults:userInfo];
         //[self cancel];
     }
-    NSLog(@"%@", self.results);
     
     
     

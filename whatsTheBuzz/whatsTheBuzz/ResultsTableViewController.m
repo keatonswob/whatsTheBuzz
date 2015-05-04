@@ -18,10 +18,15 @@
 @property (nonatomic) NSMutableArray *sourceResults;
 @property (nonatomic) NSString *webUrl;
 @property (nonatomic) NSMutableArray *urlResults;
+@property (nonatomic) Bing *bing;
+
 
 @end
 
 @implementation ResultsTableViewController
+{
+    BOOL whichMethod;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,10 +39,10 @@
     self.sourceResults = [[NSMutableArray alloc] init];
     self.urlResults = [[NSMutableArray alloc] init];
     
-    Bing *bing = [[Bing alloc] init];
-    bing.delegate = self;
-    [bing search:self.queryString];
-    
+    self.bing = [[Bing alloc] init];
+    self.bing.delegate = self;
+    [self.bing search:self.queryString];
+    whichMethod = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -50,52 +55,27 @@
 
 -(void)getResults:(NSDictionary *)websites
 {
+    
+    
     NSLog(@"%@", websites);
     NSDictionary *d = [websites objectForKey:@"d"];
     NSArray *results = [d objectForKey:@"results"];
-    NSDictionary *data = results[0];
-    NSString *descrition1 = [data objectForKey:@"Description"];
-    NSString *title1 = [data objectForKey:@"Title"];
-    NSString *source1 = [data objectForKey:@"Source"];
-    NSDictionary *data2 = results[1];
-    NSString *descrition2 = [data2 objectForKey:@"Description"];
-    NSString *title2 = [data2 objectForKey:@"Title"];
-    NSString *source2 = [data2 objectForKey:@"Source"];
-    NSDictionary *data3 = results[2];
-    NSString *descrition3 = [data3 objectForKey:@"Description"];
-    NSString *title3 = [data3 objectForKey:@"Title"];
-    NSString *source3 = [data3 objectForKey:@"Source"];
-    NSDictionary *data4 = results[3];
-    NSString *descrition4 = [data4 objectForKey:@"Description"];
-    NSString *title4 = [data4 objectForKey:@"Title"];
-    NSString *source4 = [data4 objectForKey:@"Source"];
     
-    [self.results addObject:title1];
-    [self.results addObject:title2];
-    [self.results addObject:title3];
-    [self.results addObject:title4];
-    [self.descripResults addObject:descrition1];
-    [self.descripResults addObject:descrition2];
-    [self.descripResults addObject:descrition3];
-    [self.descripResults addObject:descrition4];
-    [self.sourceResults addObject:source1];
-    [self.sourceResults addObject:source2];
-    [self.sourceResults addObject:source3];
-    [self.sourceResults addObject:source4];
+    if (results.count == 0)
+    {
+        [self.bing searchWeb:self.queryString];
+        whichMethod = YES;
+        
+    }
     
-    
-    [self.tableView reloadData];
-    
-   
-    NSString *url1 = [data objectForKey:@"Url"];
-    NSString *url2 = [data2 objectForKey:@"Url"];
-    NSString *url3 = [data3 objectForKey:@"Url"];
-    NSString *url4 = [data4 objectForKey:@"Url"];
-    
-    [self.urlResults addObject:url1];
-    [self.urlResults addObject:url2];
-    [self.urlResults addObject:url3];
-    [self.urlResults addObject:url4];
+    if (whichMethod == NO)
+    {
+        [self parseNews:results];
+    }
+    else
+    {
+       [self parseWeb:results];
+    }
     
 
 }
@@ -119,7 +99,7 @@
     cell.titleLabel.text = self.results[indexPath.row];
     cell.descripLabel.text = self.descripResults[indexPath.row];
     cell.siteNameLabel.text = self.sourceResults[indexPath.row];
-    cell.backgroundColor = [UIColor yellowColor];
+    //cell.backgroundColor = [UIColor yellowColor];
     return cell;
 }
 
@@ -177,6 +157,65 @@
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+}
+
+-(void)parseNews:(NSArray *)results
+{
+    
+    
+    for (NSDictionary *data in results)
+    {
+        NSString *description = [data objectForKey:@"Description"];
+        [self.descripResults addObject:description];
+                               
+    }
+    
+    for (NSDictionary *data2 in results)
+    {
+        NSString *title = [data2 objectForKey:@"Title"];
+        [self.results addObject:title];
+    }
+    
+    for (NSDictionary *data3 in results)
+    {
+        NSString *source = [data3 objectForKey:@"Source"];
+        [self.sourceResults addObject:source];
+    }
+    
+    for (NSDictionary *data4 in results)
+    {
+        NSString *url = [data4 objectForKey:@"Url"];
+        [self.urlResults addObject:url];
+    }
+
+    [self.tableView reloadData];
+}
+
+-(void)parseWeb:(NSArray *)results
+{
+    
+    for (NSDictionary *data in results)
+    {
+        NSString *description = [data objectForKey:@"Description"];
+        [self.descripResults addObject:description];
+        
+    }
+    
+    for (NSDictionary *data2 in results)
+    {
+        NSString *title = [data2 objectForKey:@"Title"];
+        [self.results addObject:title];
+    }
+    
+    for (NSDictionary *data4 in results)
+    {
+        NSString *url = [data4 objectForKey:@"Url"];
+        [self.urlResults addObject:url];
+    }
+    
+    [self.tableView reloadData];
+    
+ 
 }
 
 

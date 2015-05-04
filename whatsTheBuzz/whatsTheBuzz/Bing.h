@@ -23,5 +23,6 @@
 
 - (id) init;
 - (void)search:(NSString *)queryString;
+- (void)searchWeb:(NSString *)queryString;
 
 @end

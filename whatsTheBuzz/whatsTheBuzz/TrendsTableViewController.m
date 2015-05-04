@@ -11,6 +11,7 @@
 #import "STTwitter.h"
 #import "WebSiteCollectionViewController.h"
 #import "ResultsTableViewController.h"
+#import "NetworkManager.h"
 
 @interface TrendsTableViewController ()
 
@@ -30,6 +31,9 @@
     [trendy twitterGet];
     
     trendy.delegate = self;
+    
+    [[NetworkManager sharedNetworkManager] yahooGet];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
