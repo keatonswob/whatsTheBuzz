@@ -14,6 +14,8 @@
     NSURLSessionConfiguration *configuration;
     NSURLSession *session;
     NSMutableDictionary *receivedDataDict;
+    NSMutableArray *yahooTrendsArray;
+    NSMutableArray *googleTrendsArray;
 }
 
 @end
@@ -43,6 +45,8 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
     self = [super init];
     if (self)
     {
+        googleTrendsArray = [[NSMutableArray alloc] init];
+        yahooTrendsArray = [[NSMutableArray alloc] init];
         configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         receivedDataDict = [[NSMutableDictionary alloc] init];
@@ -53,6 +57,13 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
 -(void)googleGet
 {
     NSURL *url = [NSURL URLWithString:googleUrl];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url];
+    [self startDataTask:dataTask];
+}
+
+-(void)yahooGet
+{
+    NSURL *url = [NSURL URLWithString:yahooUrl];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url];
     [self startDataTask:dataTask];
 }
@@ -86,9 +97,24 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
         
         if ([[aDictionary objectForKey:@"name"] isEqualToString:@"yahoo Treends"])
         {
+            NSDictionary *results = [aDictionary objectForKey:@"results"];
+            NSArray *collection = [results objectForKey:@"collection1"];
+            for (NSDictionary *distionary in collection)
+            {
+                NSDictionary *trendsDict = [distionary objectForKey:@"trends"];
+                NSString *trendText = [trendsDict objectForKey:@"text"];
+                [yahooTrendsArray addObject:trendText];
+                
+            }
             
-         //       [self.delegate nextMatchWasFound:upComingMatch];
+            [self.delegate addYahooTrends:yahooTrendsArray];
+        }
+        else
+        {
+            NSArray *googlTrends = [aDictionary objectForKey:@"1"];
+            [googleTrendsArray addObjectsFromArray:googlTrends];
             
+            [self.delegate addGoogleTrends:googleTrendsArray];
         }
         
         

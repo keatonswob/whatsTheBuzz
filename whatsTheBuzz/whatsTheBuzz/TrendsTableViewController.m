@@ -11,6 +11,7 @@
 #import "STTwitter.h"
 #import "WebSiteCollectionViewController.h"
 #import "ResultsTableViewController.h"
+#import "SWRevealViewController.h"
 #import "NetworkManager.h"
 
 @interface TrendsTableViewController ()
@@ -25,6 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController)
+    {
+        [self.sideBarButton setTarget:self.revealViewController];
+        [self.sideBarButton setAction:@selector(revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    self.trending = [[NSMutableArray alloc] init];
     
     
     TwitterTrends *trendy = [[TwitterTrends alloc] init];
@@ -33,6 +43,8 @@
     trendy.delegate = self;
     
     [[NetworkManager sharedNetworkManager] yahooGet];
+    [[NetworkManager sharedNetworkManager] googleGet];
+    [NetworkManager sharedNetworkManager].delegate = self;
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -129,8 +141,50 @@
 -(void)addTwitterTrends:(NSMutableArray *)twittTrends
 {
     NSLog(@"%@",twittTrends);
-    self.trending = twittTrends;
+//    for (NSString *trend in twittTrends)
+//    {
+//        [self.trending addObject:trend];
+//    }
+    [self.trending addObjectsFromArray:twittTrends];
     [self.tableView reloadData];
 }
+
+-(void)addYahooTrends:(NSMutableArray *)yahooTrends
+{
+    NSLog(@"%@", yahooTrends);
+    [self.trending addObjectsFromArray:yahooTrends];
+    [self.tableView reloadData];
+    
+}
+
+-(void)addGoogleTrends:(NSMutableArray *)googleTrends
+{
+    [self.trending addObjectsFromArray:googleTrends];
+    [self.tableView reloadData];
+}
+- (IBAction)shareButton:(UIBarButtonItem *)sender
+{
+    [self shareText:self.trending[1] andImage:nil andUrl:nil];
+}
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
+
+
 
 @end

@@ -13,11 +13,13 @@
 
 @interface ResultsTableViewController ()
 
+
 @property (nonatomic) NSMutableArray *results;
 @property (nonatomic) NSMutableArray *descripResults;
 @property (nonatomic) NSMutableArray *sourceResults;
 @property (nonatomic) NSString *webUrl;
 @property (nonatomic) NSMutableArray *urlResults;
+@property (nonatomic) NSMutableArray *urlImages;
 @property (nonatomic) Bing *bing;
 
 
@@ -34,15 +36,20 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    
+    
     self.results = [[NSMutableArray alloc] init];
     self.descripResults = [[NSMutableArray alloc] init];
     self.sourceResults = [[NSMutableArray alloc] init];
     self.urlResults = [[NSMutableArray alloc] init];
+    self.urlImages = [[NSMutableArray alloc] init];
     
     self.bing = [[Bing alloc] init];
     self.bing.delegate = self;
     [self.bing search:self.queryString];
     whichMethod = NO;
+    
+    
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -186,6 +193,7 @@
     {
         NSString *url = [data4 objectForKey:@"Url"];
         [self.urlResults addObject:url];
+        
     }
 
     [self.tableView reloadData];

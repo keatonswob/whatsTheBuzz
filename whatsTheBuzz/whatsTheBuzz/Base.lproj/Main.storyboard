@@ -8,7 +8,7 @@
         <scene sceneID="QKd-b7-MyY">
             <objects>
                 <tableViewController id="DfZ-aZ-XHP" customClass="TrendsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fp5-Wg-h6Q">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fp5-Wg-h6Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,7 +37,16 @@
                             <outlet property="delegate" destination="DfZ-aZ-XHP" id="Smj-Dh-CUw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="what'sTheBuzz" id="5gZ-Fk-9Re"/>
+                    <navigationItem key="navigationItem" title="what'sTheBuzz" id="5gZ-Fk-9Re">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="kSp-SL-pX5">
+                            <connections>
+                                <action selector="shareButton:" destination="DfZ-aZ-XHP" id="DqW-L4-1i3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sideBarButton" destination="kSp-SL-pX5" id="Ksb-VD-NDm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoH-Hd-6U3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +151,7 @@
                                     <outlet property="descripLabel" destination="KpN-JZ-nla" id="Obm-Pg-laP"/>
                                     <outlet property="siteNameLabel" destination="X3e-Qu-ixK" id="Hcu-51-Mnf"/>
                                     <outlet property="titleLabel" destination="0aj-eI-EkD" id="hFo-Nm-Ift"/>
-                                    <segue destination="QTi-SP-yIb" kind="show" identifier="BigWebsiteSegue" id="iLq-5U-ijp"/>
+                                    <segue destination="QTi-SP-yIb" kind="show" identifier="BigWebsiteSegue" id="q46-dG-pFc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -151,14 +160,17 @@
                             <outlet property="delegate" destination="6zp-Z8-4NK" id="GUj-cf-kZZ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcQ-xb-dYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1930" y="416"/>
+            <point key="canvasLocation" x="2024" y="416"/>
         </scene>
         <!--Big Web Site View Controller-->
         <scene sceneID="Hyg-gE-hua">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="QTi-SP-yIb" customClass="BigWebSiteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IJn-Sp-IDk"/>
@@ -181,10 +193,48 @@
                             <constraint firstItem="TEA-MY-4kK" firstAttribute="leading" secondItem="WLC-pk-dhm" secondAttribute="leading" id="iA7-nU-4NV"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="izm-qZ-cGM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="grF-B8-O4O"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2615" y="416"/>
+            <point key="canvasLocation" x="2881" y="416"/>
+        </scene>
+        <!--Menu Table View Controller-->
+        <scene sceneID="Hkt-a5-qi5">
+            <objects>
+                <tableViewController id="W57-aN-U5J" customClass="MenuTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GmP-bW-aS6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fYB-D8-ypd" style="IBUITableViewCellStyleDefault" id="aMd-C5-490">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMd-C5-490" id="Ghz-uC-Hh2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fYB-D8-ypd">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="W57-aN-U5J" id="zkk-TO-Bn7"/>
+                            <outlet property="delegate" destination="W57-aN-U5J" id="Lrh-Ah-n91"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3f-Oh-5Uo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="-326"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xxg-zy-yvQ">
@@ -205,4 +255,7 @@
             <point key="canvasLocation" x="442" y="416"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="28" height="20"/>
+    </resources>
 </document>

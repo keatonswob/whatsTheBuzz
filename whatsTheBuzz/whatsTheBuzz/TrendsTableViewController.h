@@ -16,10 +16,13 @@
 
 @protocol OtherTrendsDelegate
 
--(void)addOtherTrends:(NSMutableArray *)otherTrends;
+-(void)addYahooTrends:(NSMutableArray *)yahooTrends;
+-(void)addGoogleTrends:(NSMutableArray *)googleTrends;
+
 
 @end
 
 @interface TrendsTableViewController : UITableViewController<TwitterTrendsDelegate, OtherTrendsDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
 @end
