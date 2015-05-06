@@ -42,5 +42,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - Action Handlers
+
+- (IBAction)share:(UIBarButtonItem *)sender
+{
+    [self shareText:self.siteUrl andImage:nil andUrl:nil];
+
+}
+
+
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
 
 @end

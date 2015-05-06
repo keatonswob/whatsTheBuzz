@@ -38,11 +38,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="what'sTheBuzz" id="5gZ-Fk-9Re">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="kSp-SL-pX5">
-                            <connections>
-                                <action selector="shareButton:" destination="DfZ-aZ-XHP" id="DqW-L4-1i3"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="kSp-SL-pX5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="sideBarButton" destination="kSp-SL-pX5" id="Ksb-VD-NDm"/>
@@ -51,56 +47,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoH-Hd-6U3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="416"/>
-        </scene>
-        <!--Web Site Collection View Controller-->
-        <scene sceneID="aif-AN-588">
-            <objects>
-                <collectionViewController id="hZL-6j-5hk" customClass="WebSiteCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8BU-uP-MFI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DZL-FE-lee">
-                            <size key="itemSize" width="575" height="152"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WebCell" id="ZOp-Xa-g8m" customClass="WebViewCollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="575" height="152"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMM-C6-IN9">
-                                            <rect key="frame" x="0.0" y="0.0" width="575" height="152"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </webView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="sMM-C6-IN9" secondAttribute="bottom" id="L5N-54-mu3"/>
-                                    <constraint firstItem="sMM-C6-IN9" firstAttribute="top" secondItem="ZOp-Xa-g8m" secondAttribute="top" id="h9d-kp-jfQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="sMM-C6-IN9" secondAttribute="trailing" id="izf-er-CYu"/>
-                                    <constraint firstItem="sMM-C6-IN9" firstAttribute="leading" secondItem="ZOp-Xa-g8m" secondAttribute="leading" id="vp9-yD-pLI"/>
-                                </constraints>
-                                <size key="customSize" width="575" height="152"/>
-                                <connections>
-                                    <outlet property="webView" destination="sMM-C6-IN9" id="6cF-dd-3KA"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="hZL-6j-5hk" id="RyX-3K-h1Z"/>
-                            <outlet property="delegate" destination="hZL-6j-5hk" id="9Kr-3u-8kX"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dgh-As-sBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1930" y="-372"/>
         </scene>
         <!--Results Table View Controller-->
         <scene sceneID="feN-rt-zX9">
@@ -170,7 +116,6 @@
         <!--Big Web Site View Controller-->
         <scene sceneID="Hyg-gE-hua">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="QTi-SP-yIb" customClass="BigWebSiteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IJn-Sp-IDk"/>
@@ -195,10 +140,15 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="izm-qZ-cGM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="grF-B8-O4O"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="grF-B8-O4O">
+                            <connections>
+                                <action selector="share:" destination="QTi-SP-yIb" id="qMc-tG-khh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2881" y="416"/>
         </scene>

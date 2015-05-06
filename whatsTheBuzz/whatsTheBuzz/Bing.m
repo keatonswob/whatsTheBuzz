@@ -7,7 +7,6 @@
 //
 
 #import "Bing.h"
-#import "WebSiteCollectionViewController.h"
 
 @interface Bing()<NSURLSessionDataDelegate>
 {

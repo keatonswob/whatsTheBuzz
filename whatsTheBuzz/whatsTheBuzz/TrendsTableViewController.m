@@ -9,22 +9,28 @@
 #import "TrendsTableViewController.h"
 #import "TwitterTrends.h"
 #import "STTwitter.h"
-#import "WebSiteCollectionViewController.h"
 #import "ResultsTableViewController.h"
 #import "SWRevealViewController.h"
 #import "NetworkManager.h"
+#import "TrendObject.h"
 
 @interface TrendsTableViewController ()
 
 @property (nonatomic) NSMutableArray *trending;
 @property (nonatomic) NSString *queryStrng;
+@property (nonatomic) TrendObject *tObj;
+
 
 @end
 
 @implementation TrendsTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.tObj = [[TrendObject alloc] init];
     
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController)
@@ -75,7 +81,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.trending[indexPath.row];
+    TrendObject *object = self.trending[indexPath.row];
+    
+    cell.textLabel.text = object.trendString;
+    if (object.i == 1)
+    {
+        <#statements#>
+    }
+   
     
     return cell;
 }
@@ -141,49 +154,34 @@
 -(void)addTwitterTrends:(NSMutableArray *)twittTrends
 {
     NSLog(@"%@",twittTrends);
-//    for (NSString *trend in twittTrends)
-//    {
-//        [self.trending addObject:trend];
-//    }
-    [self.trending addObjectsFromArray:twittTrends];
+    
+    for (NSString *trend in twittTrends)
+    {
+        self.tObj.trendString = trend;
+        self.tObj.i = 1;
+        [self.trending addObject:self.tObj];
+    }
+
+   // [self.trending addObjectsFromArray:twittTrends];
     [self.tableView reloadData];
 }
 
--(void)addYahooTrends:(NSMutableArray *)yahooTrends
-{
-    NSLog(@"%@", yahooTrends);
-    [self.trending addObjectsFromArray:yahooTrends];
-    [self.tableView reloadData];
-    
-}
+//-(void)addYahooTrends:(NSMutableArray *)yahooTrends
+//{
+//    NSLog(@"%@", yahooTrends);
+//    [self.trending addObjectsFromArray:yahooTrends];
+//    [self.tableView reloadData];
+//    
+//}
+//
+//-(void)addGoogleTrends:(NSMutableArray *)googleTrends
+//{
+//    [self.trending addObjectsFromArray:googleTrends];
+//    [self.tableView reloadData];
+//}
 
--(void)addGoogleTrends:(NSMutableArray *)googleTrends
-{
-    [self.trending addObjectsFromArray:googleTrends];
-    [self.tableView reloadData];
-}
-- (IBAction)shareButton:(UIBarButtonItem *)sender
-{
-    [self shareText:self.trending[1] andImage:nil andUrl:nil];
-}
 
-- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
-{
-    NSMutableArray *sharingItems = [NSMutableArray new];
-    
-    if (text) {
-        [sharingItems addObject:text];
-    }
-    if (image) {
-        [sharingItems addObject:image];
-    }
-    if (url) {
-        [sharingItems addObject:url];
-    }
-    
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
-}
+
 
 
 
