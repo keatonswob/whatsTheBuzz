@@ -13,21 +13,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrendCell" textLabel="Sdz-vo-5nK" style="IBUITableViewCellStyleDefault" id="ocw-4N-Z8p">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrendCell" id="ocw-4N-Z8p" customClass="TrendTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ocw-4N-Z8p" id="CwB-5k-wSu">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sdz-vo-5nK">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ME-5F-sLZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="10" height="56"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="10" id="Knh-Cr-t8a"/>
+                                                <constraint firstAttribute="height" constant="56" id="V9W-b3-kYw"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="V9W-b3-kYw"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-Hc-ds4">
+                                            <rect key="frame" x="23" y="17" width="46" height="23"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="4ME-5F-sLZ" secondAttribute="bottom" id="5M1-d0-AbB"/>
+                                        <constraint firstItem="4ME-5F-sLZ" firstAttribute="top" secondItem="CwB-5k-wSu" secondAttribute="top" id="DyW-Xz-Z2g"/>
+                                        <constraint firstItem="6GY-Hc-ds4" firstAttribute="top" secondItem="CwB-5k-wSu" secondAttribute="top" constant="17" id="F0I-7M-gAP"/>
+                                        <constraint firstItem="4ME-5F-sLZ" firstAttribute="leading" secondItem="CwB-5k-wSu" secondAttribute="leading" id="Ke9-DA-bWt"/>
+                                        <constraint firstAttribute="trailing" secondItem="4ME-5F-sLZ" secondAttribute="trailing" constant="566" id="hqK-9s-1pL"/>
+                                        <constraint firstItem="6GY-Hc-ds4" firstAttribute="leading" secondItem="CwB-5k-wSu" secondAttribute="leading" constant="23" id="xeq-Cv-e9w"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="hqK-9s-1pL"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="TrendLabel" destination="6GY-Hc-ds4" id="vw9-t0-LH0"/>
+                                    <outlet property="cellColorView" destination="4ME-5F-sLZ" id="hjb-0c-yiX"/>
                                     <segue destination="6zp-Z8-4NK" kind="show" identifier="ResultsSegue" id="Bx0-iw-WtV"/>
                                 </connections>
                             </tableViewCell>

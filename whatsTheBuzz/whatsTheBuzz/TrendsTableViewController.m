@@ -7,18 +7,26 @@
 //
 
 #import "TrendsTableViewController.h"
+#import "ResultsTableViewController.h"
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "TwitterTrends.h"
 #import "STTwitter.h"
-#import "ResultsTableViewController.h"
-#import "SWRevealViewController.h"
 #import "NetworkManager.h"
+
+#import "TrendTableViewCell.h"
 #import "TrendObject.h"
 
 @interface TrendsTableViewController ()
+{
+    int i;
+    BOOL r;
+}
 
 @property (nonatomic) NSMutableArray *trending;
 @property (nonatomic) NSString *queryStrng;
-@property (nonatomic) TrendObject *tObj;
 
 
 @end
@@ -29,19 +37,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
     
-    self.tObj = [[TrendObject alloc] init];
-    
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if (revealViewController)
-    {
-        [self.sideBarButton setTarget:self.revealViewController];
-        [self.sideBarButton setAction:@selector(revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
+//    SWRevealViewController *revealViewController = self.revealViewController;
+//    if (revealViewController)
+//    {
+//        [self.sideBarButton setTarget:self.revealViewController];
+//        [self.sideBarButton setAction:@selector(revealToggle: )];
+//        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    }
     
     self.trending = [[NSMutableArray alloc] init];
     
+    r = NO;
     
     TwitterTrends *trendy = [[TwitterTrends alloc] init];
     [trendy twitterGet];
@@ -78,19 +88,33 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendCell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TrendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendCell" forIndexPath:indexPath];
+   
+    
+        [self shuffle:self.trending];
+    
     
     TrendObject *object = self.trending[indexPath.row];
-    
-    cell.textLabel.text = object.trendString;
+
+   cell.TrendLabel.text = object.trendString;
     if (object.i == 1)
     {
-        <#statements#>
+        cell.cellColorView.backgroundColor = [UIColor blueColor];
+    }
+    else if (object.i == 2)
+    {
+        cell.cellColorView.backgroundColor = [UIColor redColor];
+    }
+    else if (object.i == 3)
+    {
+        cell.cellColorView.backgroundColor = [UIColor greenColor];
     }
    
     
     return cell;
+    
 }
 
 
@@ -137,11 +161,11 @@
     {
         ResultsTableViewController *resultsVC = [segue destinationViewController];
         
-        UITableViewCell *cell = sender;
+        TrendTableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        NSString *query = self.trending[indexPath.row];
+        TrendObject *query = self.trending[indexPath.row];
         NSLog(@"%@", query);
-        resultsVC.queryString = query;
+        resultsVC.queryString = query.trendString;
         
         
     }
@@ -155,31 +179,58 @@
 {
     NSLog(@"%@",twittTrends);
     
-    for (NSString *trend in twittTrends)
+    
+    for (i=1; i<twittTrends.count; i++)
     {
-        self.tObj.trendString = trend;
-        self.tObj.i = 1;
-        [self.trending addObject:self.tObj];
+        TrendObject *tObj = [[TrendObject alloc] init];
+        tObj.trendString = twittTrends[i];
+        tObj.i = 1;
+        [self.trending addObject:tObj];
     }
 
-   // [self.trending addObjectsFromArray:twittTrends];
     [self.tableView reloadData];
 }
 
-//-(void)addYahooTrends:(NSMutableArray *)yahooTrends
-//{
-//    NSLog(@"%@", yahooTrends);
-//    [self.trending addObjectsFromArray:yahooTrends];
-//    [self.tableView reloadData];
-//    
-//}
-//
-//-(void)addGoogleTrends:(NSMutableArray *)googleTrends
-//{
-//    [self.trending addObjectsFromArray:googleTrends];
-//    [self.tableView reloadData];
-//}
+-(void)addYahooTrends:(NSMutableArray *)yahooTrends
+{
+    NSLog(@"%@", yahooTrends);
+    
+    for (i=1; i<yahooTrends.count; i++)
+    {
+        TrendObject *tObj = [[TrendObject alloc] init];
+        tObj.trendString = yahooTrends[i];
+        tObj.i = 2;
+        [self.trending addObject:tObj];
+    }
+    
+   
+    
+    [self.tableView reloadData];
+    
+}
 
+-(void)addGoogleTrends:(NSMutableArray *)googleTrends
+{
+    
+    for (i=1; i<googleTrends.count; i++)
+    {
+        TrendObject *tObj = [[TrendObject alloc] init];
+        tObj.trendString = googleTrends[i];
+        tObj.i = 3;
+        [self.trending addObject:tObj];
+    }
+    [self.tableView reloadData];
+}
+
+- (void)shuffle:(NSMutableArray *)mutArray
+{
+    
+    for (NSUInteger g = 0; g < mutArray.count; ++g) {
+        NSInteger remainingCount = mutArray.count - g;
+        NSInteger exchangeIndex = g + arc4random_uniform((u_int32_t )remainingCount);
+        [mutArray exchangeObjectAtIndex:g withObjectAtIndex:exchangeIndex];
+    }
+}
 
 
 

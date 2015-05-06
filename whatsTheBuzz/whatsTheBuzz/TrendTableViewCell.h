@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TrendTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *TrendLabel;
+@property (strong, nonatomic) IBOutlet UIView *cellColorView;
 
 @end
