@@ -97,12 +97,14 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
         
         if ([[aDictionary objectForKey:@"name"] isEqualToString:@"yahoo Treends"])
         {
+            [yahooTrendsArray removeAllObjects];
             NSDictionary *results = [aDictionary objectForKey:@"results"];
             NSArray *collection = [results objectForKey:@"collection1"];
             for (NSDictionary *distionary in collection)
             {
                 NSDictionary *trendsDict = [distionary objectForKey:@"trends"];
                 NSString *trendText = [trendsDict objectForKey:@"text"];
+                
                 [yahooTrendsArray addObject:trendText];
                 
             }
@@ -111,6 +113,7 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
         }
         else
         {
+            [googleTrendsArray removeAllObjects];
             NSArray *googlTrends = [aDictionary objectForKey:@"1"];
             [googleTrendsArray addObjectsFromArray:googlTrends];
             

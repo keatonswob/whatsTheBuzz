@@ -17,6 +17,7 @@
 #import "NetworkManager.h"
 
 #import "TrendTableViewCell.h"
+#import "CustomCellBackground.h"          
 #import "TrendObject.h"
 
 @interface TrendsTableViewController ()
@@ -36,10 +37,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
+//    
+//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//    loginButton.center = self.view.center;
+//    [self.view addSubview:loginButton];
     
 //    SWRevealViewController *revealViewController = self.revealViewController;
 //    if (revealViewController)
@@ -62,7 +63,14 @@
     [[NetworkManager sharedNetworkManager] googleGet];
     [NetworkManager sharedNetworkManager].delegate = self;
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
     
+  
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -91,10 +99,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TrendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendCell" forIndexPath:indexPath];
-   
     
-        [self shuffle:self.trending];
+    if (![cell.backgroundView isKindOfClass:[CustomCellBackground class]])
+    {
+        cell.backgroundView = [[CustomCellBackground alloc] init];
+    }
     
+    if (![cell.selectedBackgroundView isKindOfClass:[CustomCellBackground class]])
+    {
+        cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    }
+    
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = cell.bounds;
+//    gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:.1 green:1 blue:.5 alpha:1], (id)[[UIColor colorWithRed:1 green:1 blue:.29 alpha:1]CGColor], nil];
+//    [cell.layer addSublayer:gradient];
+//    
     
     TrendObject *object = self.trending[indexPath.row];
 
@@ -232,6 +252,17 @@
     }
 }
 
+-(void)refresh
+{
+    [self.trending removeAllObjects];
+    [[NetworkManager sharedNetworkManager] yahooGet];
+    [[NetworkManager sharedNetworkManager] googleGet];
+    TwitterTrends *trendy = [[TwitterTrends alloc] init];
+    [trendy twitterGet];
+     trendy.delegate = self;
+    [self.tableView reloadData];
+      [self.refreshControl endRefreshing];
+}
 
 
 

@@ -10,6 +10,7 @@
 #import "WebsiteTableViewCell.h"
 #import "BigWebSiteViewController.h"
 #import "Bing.h"
+#import "CustomCellBackground.h"
 
 @interface ResultsTableViewController ()
 
@@ -102,6 +103,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WebsiteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WebsiteCell" forIndexPath:indexPath];
+    
+    if (![cell.backgroundView isKindOfClass:[CustomCellBackground class]])
+    {
+        cell.backgroundView = [[CustomCellBackground alloc] init];
+    }
+    
+    if (![cell.selectedBackgroundView isKindOfClass:[CustomCellBackground class]])
+    {
+        cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    }
     
     cell.titleLabel.text = self.results[indexPath.row];
     cell.descripLabel.text = self.descripResults[indexPath.row];

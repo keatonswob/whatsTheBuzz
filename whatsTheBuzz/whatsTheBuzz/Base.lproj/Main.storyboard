@@ -18,9 +18,15 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ocw-4N-Z8p" id="CwB-5k-wSu">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-Hc-ds4">
+                                            <rect key="frame" x="23" y="17" width="46" height="23"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ME-5F-sLZ">
                                             <rect key="frame" x="0.0" y="0.0" width="10" height="56"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="10" id="Knh-Cr-t8a"/>
                                                 <constraint firstAttribute="height" constant="56" id="V9W-b3-kYw"/>
@@ -31,12 +37,6 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GY-Hc-ds4">
-                                            <rect key="frame" x="23" y="17" width="46" height="23"/>
-                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="4ME-5F-sLZ" secondAttribute="bottom" id="5M1-d0-AbB"/>
@@ -52,7 +52,6 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="TrendLabel" destination="6GY-Hc-ds4" id="vw9-t0-LH0"/>
                                     <outlet property="cellColorView" destination="4ME-5F-sLZ" id="hjb-0c-yiX"/>
@@ -91,33 +90,33 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aj-eI-EkD">
-                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="8" width="568" height="19"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-Qu-ixK">
-                                            <rect key="frame" x="8" y="68" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="16" y="67" width="39" height="19"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpN-JZ-nla">
-                                            <rect key="frame" x="8" y="43" width="584" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="16" y="41" width="568" height="18"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="0aj-eI-EkD" secondAttribute="trailing" constant="8" id="2Wb-dw-ZlC"/>
-                                        <constraint firstItem="0aj-eI-EkD" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="8" id="36a-kI-3MG"/>
-                                        <constraint firstAttribute="trailing" secondItem="KpN-JZ-nla" secondAttribute="trailing" constant="8" id="BwJ-Co-y3U"/>
+                                        <constraint firstAttribute="trailing" secondItem="0aj-eI-EkD" secondAttribute="trailing" constant="16" id="2Wb-dw-ZlC"/>
+                                        <constraint firstItem="0aj-eI-EkD" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="16" id="36a-kI-3MG"/>
+                                        <constraint firstAttribute="trailing" secondItem="KpN-JZ-nla" secondAttribute="trailing" constant="16" id="BwJ-Co-y3U"/>
                                         <constraint firstItem="X3e-Qu-ixK" firstAttribute="top" secondItem="KpN-JZ-nla" secondAttribute="bottom" constant="8" id="S3P-vU-nhZ"/>
-                                        <constraint firstItem="KpN-JZ-nla" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="8" id="gfl-d2-2mt"/>
+                                        <constraint firstItem="KpN-JZ-nla" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="16" id="gfl-d2-2mt"/>
                                         <constraint firstItem="KpN-JZ-nla" firstAttribute="top" secondItem="0aj-eI-EkD" secondAttribute="bottom" constant="14" id="ivP-Q2-muo"/>
                                         <constraint firstItem="0aj-eI-EkD" firstAttribute="top" secondItem="uEg-9D-Xh7" secondAttribute="top" constant="8" id="k7k-kE-K2Z"/>
-                                        <constraint firstItem="X3e-Qu-ixK" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="8" id="qyO-dO-9bF"/>
+                                        <constraint firstItem="X3e-Qu-ixK" firstAttribute="leading" secondItem="uEg-9D-Xh7" secondAttribute="leading" constant="16" id="qyO-dO-9bF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.95155069540000004" green="0.96078431369999995" blue="0.61616170849999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -135,7 +134,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcQ-xb-dYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,27 +145,18 @@
             <objects>
                 <viewController id="QTi-SP-yIb" customClass="BigWebSiteViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IJn-Sp-IDk"/>
-                        <viewControllerLayoutGuide type="bottom" id="DCh-Rn-XTR"/>
+                        <viewControllerLayoutGuide type="top" id="b8z-SC-zBB"/>
+                        <viewControllerLayoutGuide type="bottom" id="gsa-5h-kxu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WLC-pk-dhm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEA-MY-4kK">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
+                    <view key="view" contentMode="scaleToFill" id="XKK-2j-Tht">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="TEA-MY-4kK" secondAttribute="trailing" id="4dx-w9-zd9"/>
-                            <constraint firstAttribute="bottom" secondItem="TEA-MY-4kK" secondAttribute="bottom" id="Jof-bb-JPO"/>
-                            <constraint firstItem="TEA-MY-4kK" firstAttribute="top" secondItem="IJn-Sp-IDk" secondAttribute="bottom" id="MHH-xB-SYr"/>
-                            <constraint firstItem="TEA-MY-4kK" firstAttribute="leading" secondItem="WLC-pk-dhm" secondAttribute="leading" id="iA7-nU-4NV"/>
-                        </constraints>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem image="ic_menu_star_holo_light" width="223" id="EEG-CA-mGT"/>
+                        <barButtonItem systemItem="action" id="Kcs-D8-AaL"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="izm-qZ-cGM">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="grF-B8-O4O">
                             <connections>
@@ -174,7 +164,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -234,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_menu_star_holo_light" width="32" height="32"/>
         <image name="menu" width="28" height="20"/>
     </resources>
 </document>
