@@ -17,5 +17,7 @@
 @property (nonatomic) NSString *nameString;
 @property (nonatomic) NSString *desString;
 @property (nonatomic) NSString *sourceString;
+@property (nonatomic) BOOL b;
+@property (nonatomic) FavArticle *article;
 
 @end

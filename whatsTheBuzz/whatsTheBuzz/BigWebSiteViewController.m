@@ -7,7 +7,9 @@
 //
 
 #import "BigWebSiteViewController.h"
+#import "ProgressHUD.h"
 #import <WebKit/WebKit.h>
+
 
 @interface BigWebSiteViewController ()<WKNavigationDelegate>
 {
@@ -67,12 +69,25 @@
 
 - (IBAction)favoriteURL:(UIBarButtonItem *)sender
 {
+    //[ProgressHUD show:@"Favorited"];
+    if (self.b == NO)
+    {
     FavArticle *favArticle = [NSEntityDescription insertNewObjectForEntityForName:@"FavArticle" inManagedObjectContext:self.cdStack.managedObjectContext];
     favArticle.url = self.siteUrl;
     favArticle.artDescrip = self.desString;
     favArticle.artName = self.nameString;
     favArticle.source = self.sourceString;
     [self saveCoreDataUpdates];
+    [ProgressHUD showSuccess:@"Favorited"];
+     }
+    else
+    {
+        [ProgressHUD showSuccess:@"Unfavorited"];
+        [self.cdStack.managedObjectContext deleteObject:self.article];
+        [self saveCoreDataUpdates];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+   
     
 }
 

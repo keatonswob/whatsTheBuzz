@@ -83,6 +83,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+}
+
 -(void)getResults:(NSDictionary *)websites
 {
     
@@ -158,8 +162,7 @@
         cell.titleLabel.text = article.artName;
         cell.descripLabel.text = article.artDescrip;
         cell.siteNameLabel.text = article.source;
-        [self.urlResults addObject: article.url];
-        
+        [self.urlResults addObject:article.url];
     }
     //cell.backgroundColor = [UIColor yellowColor];
     return cell;
@@ -223,9 +226,14 @@
         }
         bigWebVC.siteUrl = urlstring;
         bigWebVC.cdStack = cdStack;
-        
-        
-        
+        bigWebVC.b = self.b;
+        if (self.b == YES)
+        {
+            FavArticle *article = items[indexpath.row];
+            bigWebVC.article = article;
+            
+
+        }
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
