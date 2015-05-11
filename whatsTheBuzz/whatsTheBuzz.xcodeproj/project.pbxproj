@@ -6,7 +6,25 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		5A3B03B11B00E9C400CFFF0C /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 5A3B03B21B00E9C400CFFF0C /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				5A3B03B51B00E9D600CFFF0C /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		5A3B03AD1B00E20C00CFFF0C /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5A3B03B01B00E3DA00CFFF0C /* FavModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03AE1B00E3DA00CFFF0C /* FavModel.xcdatamodeld */; };
+		5A3B03B91B00EB8D00CFFF0C /* _FavArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03B81B00EB8D00CFFF0C /* _FavArticle.m */; };
+		5A3B03BD1B00EBAF00CFFF0C /* FavArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03BC1B00EBAF00CFFF0C /* FavArticle.m */; };
 		5A5F24D81AFBA997001C2C99 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F24D71AFBA997001C2C99 /* CustomCellBackground.m */; };
 		5A5F24E21AFBE526001C2C99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5F24E11AFBE526001C2C99 /* Foundation.framework */; };
 		5A6983CB1AF95BA00030E5B2 /* TrendObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6983CA1AF95BA00030E5B2 /* TrendObject.m */; };
@@ -59,6 +77,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A3B03AB1B00E20C00CFFF0C /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "../../../../Downloads/CoreDataStack-master/source/CoreDataStack.h"; sourceTree = "<group>"; };
+		5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "../../../../Downloads/CoreDataStack-master/source/CoreDataStack.m"; sourceTree = "<group>"; };
+		5A3B03AF1B00E3DA00CFFF0C /* FavModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavModel.xcdatamodel; sourceTree = "<group>"; };
+		5A3B03B71B00EB8D00CFFF0C /* _FavArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FavArticle.h; path = MOGenerated/_FavArticle.h; sourceTree = "<group>"; };
+		5A3B03B81B00EB8D00CFFF0C /* _FavArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _FavArticle.m; path = MOGenerated/_FavArticle.m; sourceTree = "<group>"; };
+		5A3B03BB1B00EBAF00CFFF0C /* FavArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavArticle.h; path = Classes/FavArticle.h; sourceTree = "<group>"; };
+		5A3B03BC1B00EBAF00CFFF0C /* FavArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavArticle.m; path = Classes/FavArticle.m; sourceTree = "<group>"; };
 		5A5F24D61AFBA997001C2C99 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
 		5A5F24D71AFBA997001C2C99 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
 		5A5F24E11AFBE526001C2C99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +184,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A3B03AA1B00E1DB00CFFF0C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B03AB1B00E20C00CFFF0C /* CoreDataStack.h */,
+				5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */,
+				5AFB72061AEFECEE006C0CB4 /* STTwitter */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		5A3B03B61B00EB7900CFFF0C /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B03BB1B00EBAF00CFFF0C /* FavArticle.h */,
+				5A3B03BC1B00EBAF00CFFF0C /* FavArticle.m */,
+				5A3B03BA1B00EB9400CFFF0C /* Generated DO NOT Touch */,
+			);
+			name = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		5A3B03BA1B00EB9400CFFF0C /* Generated DO NOT Touch */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B03B71B00EB8D00CFFF0C /* _FavArticle.h */,
+				5A3B03B81B00EB8D00CFFF0C /* _FavArticle.m */,
+			);
+			name = "Generated DO NOT Touch";
+			sourceTree = "<group>";
+		};
 		5A6983CF1AFA59D60030E5B2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +279,8 @@
 		5AFB71D21AEE8712006C0CB4 /* whatsTheBuzz */ = {
 			isa = PBXGroup;
 			children = (
-				5AFB72061AEFECEE006C0CB4 /* STTwitter */,
+				5A3B03B61B00EB7900CFFF0C /* CoreDataModels */,
+				5A3B03AA1B00E1DB00CFFF0C /* Libraries */,
 				5AFB71D71AEE8712006C0CB4 /* AppDelegate.h */,
 				5AFB71D81AEE8712006C0CB4 /* AppDelegate.m */,
 				5A7AC4D21AF91838003D0B4D /* SWRevealViewController */,
@@ -237,6 +292,7 @@
 				5AFB71E01AEE8712006C0CB4 /* Images.xcassets */,
 				5AFB71E21AEE8712006C0CB4 /* LaunchScreen.xib */,
 				5AFB71D31AEE8712006C0CB4 /* Supporting Files */,
+				5A3B03AE1B00E3DA00CFFF0C /* FavModel.xcdatamodeld */,
 			);
 			path = whatsTheBuzz;
 			sourceTree = "<group>";
@@ -388,6 +444,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "The Iron Yard";
 				TargetAttributes = {
+					5A3B03B11B00E9C400CFFF0C = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					5AFB71CF1AEE8712006C0CB4 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -412,6 +471,7 @@
 			targets = (
 				5AFB71CF1AEE8712006C0CB4 /* whatsTheBuzz */,
 				5AFB71E81AEE8712006C0CB4 /* whatsTheBuzzTests */,
+				5A3B03B11B00E9C400CFFF0C /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -436,6 +496,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A3B03B51B00E9D600CFFF0C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=${PATH}:/usr/local/bin\ncd \"${PROJECT_DIR}/whatsTheBuzz\"\nmogenerator --human-dir Classes --machine-dir MOGenerated --model FavModel.xcdatamodeld/FavModel.xcdatamodel --template-var arc=true";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5AFB71CC1AEE8712006C0CB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -452,6 +528,7 @@
 				5AFB72311AEFECEE006C0CB4 /* STTwitterStreamParser.m in Sources */,
 				5AFB724E1AF29DE7006C0CB4 /* ResultsTableViewController.m in Sources */,
 				5AFB722C1AEFECEE006C0CB4 /* STTwitterAppOnly.m in Sources */,
+				5A3B03BD1B00EBAF00CFFF0C /* FavArticle.m in Sources */,
 				5A6983CE1AFA59C10030E5B2 /* TrendTableViewCell.m in Sources */,
 				5AFB72341AEFECEE006C0CB4 /* STHTTPRequest.m in Sources */,
 				5AFB722F1AEFECEE006C0CB4 /* STTwitterOS.m in Sources */,
@@ -460,10 +537,13 @@
 				5A7AC4D01AF9180D003D0B4D /* SWRevealViewController.m in Sources */,
 				5AFB72321AEFECEE006C0CB4 /* BAVPlistNode.m in Sources */,
 				5AFB72301AEFECEE006C0CB4 /* STTwitterOSRequest.m in Sources */,
+				5A3B03B01B00E3DA00CFFF0C /* FavModel.xcdatamodeld in Sources */,
 				5AFB724B1AF29C3D006C0CB4 /* WebsiteTableViewCell.m in Sources */,
 				5AFB72291AEFECEE006C0CB4 /* NSString+STTwitter.m in Sources */,
 				5AFB722A1AEFECEE006C0CB4 /* STHTTPRequest+STTwitter.m in Sources */,
 				5AFB71D91AEE8712006C0CB4 /* AppDelegate.m in Sources */,
+				5A3B03B91B00EB8D00CFFF0C /* _FavArticle.m in Sources */,
+				5A3B03AD1B00E20C00CFFF0C /* CoreDataStack.m in Sources */,
 				5AFB722D1AEFECEE006C0CB4 /* STTwitterHTML.m in Sources */,
 				5AFB722E1AEFECEE006C0CB4 /* STTwitterOAuth.m in Sources */,
 				5AFB72041AEFD20E006C0CB4 /* TwitterTrends.m in Sources */,
@@ -509,6 +589,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5A3B03B31B00E9C400CFFF0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5A3B03B41B00E9C400CFFF0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5AFB71F11AEE8712006C0CB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -654,6 +748,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A3B03B21B00E9C400CFFF0C /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A3B03B31B00E9C400CFFF0C /* Debug */,
+				5A3B03B41B00E9C400CFFF0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5AFB71CB1AEE8712006C0CB4 /* Build configuration list for PBXProject "whatsTheBuzz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -682,6 +784,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A3B03AE1B00E3DA00CFFF0C /* FavModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A3B03AF1B00E3DA00CFFF0C /* FavModel.xcdatamodel */,
+			);
+			currentVersion = 5A3B03AF1B00E3DA00CFFF0C /* FavModel.xcdatamodel */;
+			path = FavModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5AFB71C81AEE8712006C0CB4 /* Project object */;
 }

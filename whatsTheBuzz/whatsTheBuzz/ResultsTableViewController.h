@@ -18,5 +18,6 @@
 @interface ResultsTableViewController : UITableViewController<ResultsVCDelegate>
 
 @property (nonatomic) NSString *queryString;
+@property (nonatomic) BOOL b;
 
 @end

@@ -65,7 +65,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="what'sTheBuzz" id="5gZ-Fk-9Re">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="kSp-SL-pX5"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu_star_holo_light" id="kSp-SL-pX5">
+                            <connections>
+                                <segue destination="6zp-Z8-4NK" kind="show" identifier="FavResultsSegue" id="ZmJ-Xm-qRW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sideBarButton" destination="kSp-SL-pX5" id="Ksb-VD-NDm"/>
@@ -154,16 +158,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem image="ic_menu_star_holo_light" width="223" id="EEG-CA-mGT"/>
-                        <barButtonItem systemItem="action" id="Kcs-D8-AaL"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="izm-qZ-cGM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="grF-B8-O4O">
+                        <barButtonItem image="ic_menu_star_holo_light" width="227" id="EEG-CA-mGT">
                             <connections>
-                                <action selector="share:" destination="QTi-SP-yIb" id="qMc-tG-khh"/>
+                                <action selector="favoriteURL:" destination="QTi-SP-yIb" id="gaK-I4-UYG"/>
                             </connections>
                         </barButtonItem>
-                    </navigationItem>
+                        <barButtonItem systemItem="action" id="Kcs-D8-AaL">
+                            <connections>
+                                <action selector="shareURL:" destination="QTi-SP-yIb" id="fsE-OI-sl8"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="izm-qZ-cGM"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kcu-VG-mo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,6 +231,8 @@
     </scenes>
     <resources>
         <image name="ic_menu_star_holo_light" width="32" height="32"/>
-        <image name="menu" width="28" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZmJ-Xm-qRW"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FavArticle.h"
+#import "CoreDataStack.h"
 
 @interface BigWebSiteViewController : UIViewController
 
+@property(nonatomic, strong) CoreDataStack *cdStack;
 @property (nonatomic) NSString *siteUrl;
+@property (nonatomic) NSString *nameString;
+@property (nonatomic) NSString *desString;
+@property (nonatomic) NSString *sourceString;
 
 @end

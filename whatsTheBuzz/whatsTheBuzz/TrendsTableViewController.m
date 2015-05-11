@@ -110,6 +110,8 @@
         cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     }
     
+   // [self shuffle:self.trending];
+    
 //    CAGradientLayer *gradient = [CAGradientLayer layer];
 //    gradient.frame = cell.bounds;
 //    gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:.1 green:1 blue:.5 alpha:1], (id)[[UIColor colorWithRed:1 green:1 blue:.29 alpha:1]CGColor], nil];
@@ -189,10 +191,17 @@
         
         
     }
+    if ([segue.identifier isEqualToString:@"FavResultsSegue"])
+    {
+        ResultsTableViewController *resultsVC = [segue destinationViewController];
+        resultsVC.b = YES;
+    }
     
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
+
 
 
 -(void)addTwitterTrends:(NSMutableArray *)twittTrends

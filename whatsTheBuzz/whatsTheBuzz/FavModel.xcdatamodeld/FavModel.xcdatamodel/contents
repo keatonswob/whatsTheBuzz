@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="FavArticle" representedClassName="FavArticle" syncable="YES">
+        <attribute name="artDescrip" attributeType="String" syncable="YES"/>
+        <attribute name="artName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FavArticle" positionX="-747" positionY="-891" width="128" height="103"/>
+    </elements>
+</model>

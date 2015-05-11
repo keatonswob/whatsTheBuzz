@@ -10,7 +10,9 @@
 #import <WebKit/WebKit.h>
 
 @interface BigWebSiteViewController ()<WKNavigationDelegate>
-
+{
+    NSURL *nsurl;
+}
 
 @end
 
@@ -21,7 +23,7 @@
     WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
     WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
     webView.navigationDelegate = self;
-    NSURL *nsurl=[NSURL URLWithString: self.siteUrl];
+    nsurl=[NSURL URLWithString: self.siteUrl];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
     [webView loadRequest:nsrequest];
     
@@ -57,12 +59,22 @@
 */
 #pragma mark - Action Handlers
 
-- (IBAction)share:(UIBarButtonItem *)sender
-{
-    [self shareText:self.siteUrl andImage:nil andUrl:nil];
 
+- (IBAction)shareURL:(UIBarButtonItem *)sender
+{
+    [self shareText:nil andImage:nil andUrl:nsurl];
 }
 
+- (IBAction)favoriteURL:(UIBarButtonItem *)sender
+{
+    FavArticle *favArticle = [NSEntityDescription insertNewObjectForEntityForName:@"FavArticle" inManagedObjectContext:self.cdStack.managedObjectContext];
+    favArticle.url = self.siteUrl;
+    favArticle.artDescrip = self.desString;
+    favArticle.artName = self.nameString;
+    favArticle.source = self.sourceString;
+    [self saveCoreDataUpdates];
+    
+}
 
 
 - (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
@@ -82,5 +94,17 @@
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
 }
+-(void)saveCoreDataUpdates
+{
+    [self.cdStack saveOrFail:^(NSError *errorOrNil)
+     {
+         if (errorOrNil)
+         {
+             NSLog(@"Error from CDStack:%@", [errorOrNil localizedDescription]);
+         }
+         
+     }];
+}
+
 
 @end

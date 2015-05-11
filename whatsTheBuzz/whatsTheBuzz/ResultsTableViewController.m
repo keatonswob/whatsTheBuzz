@@ -11,8 +11,14 @@
 #import "BigWebSiteViewController.h"
 #import "Bing.h"
 #import "CustomCellBackground.h"
+#import "CoreDataStack.h"
+#import "FavArticle.h"
 
 @interface ResultsTableViewController ()
+{
+    CoreDataStack *cdStack;
+    NSMutableArray *items;
+}
 
 
 @property (nonatomic) NSMutableArray *results;
@@ -22,6 +28,7 @@
 @property (nonatomic) NSMutableArray *urlResults;
 @property (nonatomic) NSMutableArray *urlImages;
 @property (nonatomic) Bing *bing;
+
 
 
 @end
@@ -38,17 +45,32 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     
+    cdStack = [CoreDataStack coreDataStackWithModelName:@"FavModel"];
+    cdStack.coreDataStoreType = CDSStoreTypeSQL;
     
+    items = [[NSMutableArray alloc] init];
     self.results = [[NSMutableArray alloc] init];
     self.descripResults = [[NSMutableArray alloc] init];
     self.sourceResults = [[NSMutableArray alloc] init];
     self.urlResults = [[NSMutableArray alloc] init];
     self.urlImages = [[NSMutableArray alloc] init];
     
-    self.bing = [[Bing alloc] init];
-    self.bing.delegate = self;
-    [self.bing search:self.queryString];
-    whichMethod = NO;
+    if (self.b == NO)
+    {
+        self.bing = [[Bing alloc] init];
+        self.bing.delegate = self;
+        [self.bing search:self.queryString];
+        whichMethod = NO;
+    }
+    else if (self.b == YES)
+    {
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"FavArticle" inManagedObjectContext:cdStack.managedObjectContext];
+        NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+        fetch.entity = entity;
+        items = nil;
+        items = [[cdStack.managedObjectContext executeFetchRequest:fetch error:nil] mutableCopy];
+        [self.tableView reloadData];
+    }
     
     
     
@@ -97,8 +119,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.results count];
+    if (self.b == NO)
+    {
+        return [self.results count];
+    }
+    else
+    {
+        return [items count];
+    }
+    
 }
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,9 +146,21 @@
         cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     }
     
-    cell.titleLabel.text = self.results[indexPath.row];
-    cell.descripLabel.text = self.descripResults[indexPath.row];
-    cell.siteNameLabel.text = self.sourceResults[indexPath.row];
+    if (self.b == NO)
+    {
+        cell.titleLabel.text = self.results[indexPath.row];
+        cell.descripLabel.text = self.descripResults[indexPath.row];
+        cell.siteNameLabel.text = self.sourceResults[indexPath.row];
+    }
+    else if (self.b == YES)
+    {
+        FavArticle *article = items[indexPath.row];
+        cell.titleLabel.text = article.artName;
+        cell.descripLabel.text = article.artDescrip;
+        cell.siteNameLabel.text = article.source;
+        [self.urlResults addObject: article.url];
+        
+    }
     //cell.backgroundColor = [UIColor yellowColor];
     return cell;
 }
@@ -168,7 +212,17 @@
         WebsiteTableViewCell *cell = sender;
         NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
         NSString *urlstring = self.urlResults[indexpath.row];
+        if (self.b == NO)
+        {
+        NSString *nameString = self.results[indexpath.row];
+        NSString *desString = self.descripResults[indexpath.row];
+        NSString *sourceString = self.sourceResults[indexpath.row];
+        bigWebVC.nameString = nameString;
+        bigWebVC.sourceString = sourceString;
+        bigWebVC.desString = desString;
+        }
         bigWebVC.siteUrl = urlstring;
+        bigWebVC.cdStack = cdStack;
         
         
         
