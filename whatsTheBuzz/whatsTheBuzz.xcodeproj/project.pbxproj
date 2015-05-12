@@ -32,7 +32,6 @@
 		5A6983D41AFA9A5B0030E5B2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6983D11AFA9A5B0030E5B2 /* FBSDKCoreKit.framework */; };
 		5A6983D51AFA9A5B0030E5B2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6983D21AFA9A5B0030E5B2 /* FBSDKLoginKit.framework */; };
 		5A6983D61AFA9A5B0030E5B2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6983D31AFA9A5B0030E5B2 /* FBSDKShareKit.framework */; };
-		5A7AC4D01AF9180D003D0B4D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7AC4CF1AF9180D003D0B4D /* SWRevealViewController.m */; };
 		5A7B728E1AF3C4860040C831 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B728D1AF3C4860040C831 /* NetworkManager.m */; };
 		5AB53FD51B01372E00703711 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5AB53FD21B01372E00703711 /* ProgressHUD.bundle */; };
 		5AB53FD61B01372E00703711 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB53FD41B01372E00703711 /* ProgressHUD.m */; };
@@ -97,8 +96,6 @@
 		5A6983D11AFA9A5B0030E5B2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		5A6983D21AFA9A5B0030E5B2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5A6983D31AFA9A5B0030E5B2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
-		5A7AC4CE1AF9180D003D0B4D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
-		5A7AC4CF1AF9180D003D0B4D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		5A7B728C1AF3C4860040C831 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		5A7B728D1AF3C4860040C831 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		5AB53FD21B01372E00703711 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = "../../../../Downloads/ProgressHUD-master/ProgressHUD/ProgressHUD/ProgressHUD.bundle"; sourceTree = "<group>"; };
@@ -258,15 +255,6 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		5A7AC4D21AF91838003D0B4D /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5A7AC4CE1AF9180D003D0B4D /* SWRevealViewController.h */,
-				5A7AC4CF1AF9180D003D0B4D /* SWRevealViewController.m */,
-			);
-			name = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		5AB53FD11B0136DE00703711 /* ProgessHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +292,6 @@
 				5A3B03AA1B00E1DB00CFFF0C /* Libraries */,
 				5AFB71D71AEE8712006C0CB4 /* AppDelegate.h */,
 				5AFB71D81AEE8712006C0CB4 /* AppDelegate.m */,
-				5A7AC4D21AF91838003D0B4D /* SWRevealViewController */,
 				5A7AC4D11AF91829003D0B4D /* ViewControllers */,
 				5A6983D01AFA59E00030E5B2 /* Objects */,
 				5A6983CF1AFA59D60030E5B2 /* Cells */,
@@ -557,7 +544,6 @@
 				5AFB722F1AEFECEE006C0CB4 /* STTwitterOS.m in Sources */,
 				5A7B728E1AF3C4860040C831 /* NetworkManager.m in Sources */,
 				5A5F24D81AFBA997001C2C99 /* CustomCellBackground.m in Sources */,
-				5A7AC4D01AF9180D003D0B4D /* SWRevealViewController.m in Sources */,
 				5AFB72321AEFECEE006C0CB4 /* BAVPlistNode.m in Sources */,
 				5AFB72301AEFECEE006C0CB4 /* STTwitterOSRequest.m in Sources */,
 				5A3B03B01B00E3DA00CFFF0C /* FavModel.xcdatamodeld in Sources */,
