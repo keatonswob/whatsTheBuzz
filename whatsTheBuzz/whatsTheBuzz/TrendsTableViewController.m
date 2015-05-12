@@ -223,50 +223,68 @@
 {
     NSLog(@"%@",twittTrends);
     
-    
-    for (i=1; i<twittTrends.count; i++)
-    {
-        TrendObject *tObj = [[TrendObject alloc] init];
-        tObj.trendString = twittTrends[i];
-        tObj.i = 1;
-        [self.trending addObject:tObj];
-    }
-    
-    
-        
-    
-    [self.tableView reloadData];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+//    for (i=1; i<twittTrends.count; i++)
+//    {
+//        TrendObject *tObj = [[TrendObject alloc] init];
+//        tObj.trendString = twittTrends[i];
+//        tObj.i = 1;
+//        int randomRow = arc4random() % [self.trending count] - 1;
+//        [self.trending insertObject:tObj atIndex:randomRow];
+//        NSIndexPath *indexpath = [NSIndexPath indexPathWithIndex:randomRow];
+//        [indexPaths addObject:indexpath];
+//    }
+  //  [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    //[self.tableView reloadData];
 }
 
 -(void)addYahooTrends:(NSMutableArray *)yahooTrends
 {
     NSLog(@"%@", yahooTrends);
     
-    for (i=1; i<yahooTrends.count; i++)
-    {
-        TrendObject *tObj = [[TrendObject alloc] init];
-        tObj.trendString = yahooTrends[i];
-        tObj.i = 2;
-        [self.trending addObject:tObj];
-    }
-    
-   
-    
-    [self.tableView reloadData];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+//    for (i=1; i<yahooTrends.count; i++)
+//    {
+//        TrendObject *tObj = [[TrendObject alloc] init];
+//        tObj.trendString = yahooTrends[i];
+//        tObj.i = 2;
+//        int randomRow = arc4random() % [self.trending count] - 1;
+//        [self.trending insertObject:tObj atIndex:randomRow];
+//        NSIndexPath *indexpath = [NSIndexPath indexPathWithIndex:randomRow];
+//        [indexPaths addObject:indexpath];
+//    }
+//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    //[self.tableView reloadData];
     
 }
 
 -(void)addGoogleTrends:(NSMutableArray *)googleTrends
 {
-    
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
     for (i=1; i<googleTrends.count; i++)
     {
         TrendObject *tObj = [[TrendObject alloc] init];
         tObj.trendString = googleTrends[i];
         tObj.i = 3;
-        [self.trending addObject:tObj];
+        int randomRow;
+        if (!self.trending || self.trending.count < 2)
+        {
+            randomRow = 0;
+        }
+        else
+        {
+            randomRow = arc4random_uniform([self.trending count] - 1);
+            NSLog(@"added to row %d", randomRow );
+        }
+        [self.trending insertObject:tObj atIndex:randomRow];
+        NSIndexPath *indexpath = [[NSIndexPath alloc] init];
+        indexpath = [NSIndexPath indexPathWithIndex:randomRow];
+        [indexPaths addObject:indexpath];
     }
-    [self.tableView reloadData];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    //[self.tableView reloadData];
 }
 
 - (void)shuffle:(NSMutableArray *)mutArray
