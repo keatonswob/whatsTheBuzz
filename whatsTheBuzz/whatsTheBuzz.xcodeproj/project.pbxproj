@@ -36,6 +36,7 @@
 		5A7B728E1AF3C4860040C831 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B728D1AF3C4860040C831 /* NetworkManager.m */; };
 		5AB53FD51B01372E00703711 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5AB53FD21B01372E00703711 /* ProgressHUD.bundle */; };
 		5AB53FD61B01372E00703711 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB53FD41B01372E00703711 /* ProgressHUD.m */; };
+		5AB8C5711B0248E90061E309 /* CstmResultCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8C5701B0248E90061E309 /* CstmResultCellBackground.m */; };
 		5AD5BA7F1AFBE62800761FBC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD5BA7E1AFBE62800761FBC /* CoreGraphics.framework */; };
 		5AFB71D61AEE8712006C0CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB71D51AEE8712006C0CB4 /* main.m */; };
 		5AFB71D91AEE8712006C0CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB71D81AEE8712006C0CB4 /* AppDelegate.m */; };
@@ -103,6 +104,8 @@
 		5AB53FD21B01372E00703711 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = "../../../../Downloads/ProgressHUD-master/ProgressHUD/ProgressHUD/ProgressHUD.bundle"; sourceTree = "<group>"; };
 		5AB53FD31B01372E00703711 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = "../../../../Downloads/ProgressHUD-master/ProgressHUD/ProgressHUD/ProgressHUD.h"; sourceTree = "<group>"; };
 		5AB53FD41B01372E00703711 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUD.m; path = "../../../../Downloads/ProgressHUD-master/ProgressHUD/ProgressHUD/ProgressHUD.m"; sourceTree = "<group>"; };
+		5AB8C56F1B0248E90061E309 /* CstmResultCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CstmResultCellBackground.h; sourceTree = "<group>"; };
+		5AB8C5701B0248E90061E309 /* CstmResultCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CstmResultCellBackground.m; sourceTree = "<group>"; };
 		5AD5BA7E1AFBE62800761FBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5AFB71D01AEE8712006C0CB4 /* whatsTheBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatsTheBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AFB71D41AEE8712006C0CB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				5A6983CA1AF95BA00030E5B2 /* TrendObject.m */,
 				5A5F24D61AFBA997001C2C99 /* CustomCellBackground.h */,
 				5A5F24D71AFBA997001C2C99 /* CustomCellBackground.m */,
+				5AB8C56F1B0248E90061E309 /* CstmResultCellBackground.h */,
+				5AB8C5701B0248E90061E309 /* CstmResultCellBackground.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				5AFB72471AF17E7C006C0CB4 /* BigWebSiteViewController.m in Sources */,
 				5AFB722B1AEFECEE006C0CB4 /* STTwitterAPI.m in Sources */,
 				5AFB72281AEFECEE006C0CB4 /* NSError+STTwitter.m in Sources */,
+				5AB8C5711B0248E90061E309 /* CstmResultCellBackground.m in Sources */,
 				5AFB72331AEFECEE006C0CB4 /* JSONSyntaxHighlight.m in Sources */,
 				5A6983CB1AF95BA00030E5B2 /* TrendObject.m in Sources */,
 				5AFB72311AEFECEE006C0CB4 /* STTwitterStreamParser.m in Sources */,

@@ -11,6 +11,7 @@
 #import "BigWebSiteViewController.h"
 #import "Bing.h"
 #import "CustomCellBackground.h"
+#import "CstmResultCellBackground.h"
 #import "CoreDataStack.h"
 #import "FavArticle.h"
 
@@ -62,15 +63,7 @@
         [self.bing search:self.queryString];
         whichMethod = NO;
     }
-    else if (self.b == YES)
-    {
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"FavArticle" inManagedObjectContext:cdStack.managedObjectContext];
-        NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
-        fetch.entity = entity;
-        items = nil;
-        items = [[cdStack.managedObjectContext executeFetchRequest:fetch error:nil] mutableCopy];
-        [self.tableView reloadData];
-    }
+   
     
     
     
@@ -85,6 +78,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    if (self.b == YES)
+    {
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"FavArticle" inManagedObjectContext:cdStack.managedObjectContext];
+        NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+        fetch.entity = entity;
+        items = nil;
+        items = [[cdStack.managedObjectContext executeFetchRequest:fetch error:nil] mutableCopy];
+        [self.tableView reloadData];
+        
+    }
 }
 
 -(void)getResults:(NSDictionary *)websites
@@ -140,14 +144,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WebsiteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WebsiteCell" forIndexPath:indexPath];
     
-    if (![cell.backgroundView isKindOfClass:[CustomCellBackground class]])
+    if (![cell.backgroundView isKindOfClass:[CstmResultCellBackground class]])
     {
-        cell.backgroundView = [[CustomCellBackground alloc] init];
+        cell.backgroundView = [[CstmResultCellBackground alloc] init];
     }
     
-    if (![cell.selectedBackgroundView isKindOfClass:[CustomCellBackground class]])
+    if (![cell.selectedBackgroundView isKindOfClass:[CstmResultCellBackground class]])
     {
-        cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+        cell.selectedBackgroundView = [[CstmResultCellBackground alloc] init];
     }
     
     if (self.b == NO)

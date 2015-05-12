@@ -186,7 +186,22 @@
         TrendTableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         TrendObject *query = self.trending[indexPath.row];
-        NSLog(@"%@", query);
+        if ([query.trendString containsString:@"#"])
+        {
+            NSString *string = query.trendString;
+            NSRegularExpression *regexp = [NSRegularExpression
+                                           regularExpressionWithPattern:@"([A-Z])([a-z])"
+                                           options:0
+                                           error:NULL];
+            NSString *newString = [regexp
+                                   stringByReplacingMatchesInString:string
+                                   options:0
+                                   range:NSMakeRange(0, string.length)
+                                   withTemplate:@" $1$2"];
+            NSLog(@"Changed '%@' -> '%@'", string, newString);
+            query.trendString = newString;
+        }
+        NSLog(@"%@", query.trendString);
         resultsVC.queryString = query.trendString;
         
         
@@ -216,7 +231,10 @@
         tObj.i = 1;
         [self.trending addObject:tObj];
     }
-
+    
+    
+        
+    
     [self.tableView reloadData];
 }
 

@@ -158,16 +158,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem image="ic_menu_star_holo_light" width="227" id="EEG-CA-mGT">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pls-ZX-Owa"/>
+                        <barButtonItem image="ic_menu_star_holo_light" id="EEG-CA-mGT">
                             <connections>
                                 <action selector="favoriteURL:" destination="QTi-SP-yIb" id="gaK-I4-UYG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="KfL-Y3-yns"/>
                         <barButtonItem systemItem="action" id="Kcs-D8-AaL">
                             <connections>
                                 <action selector="shareURL:" destination="QTi-SP-yIb" id="fsE-OI-sl8"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Z36-1b-PTn"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="izm-qZ-cGM"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
