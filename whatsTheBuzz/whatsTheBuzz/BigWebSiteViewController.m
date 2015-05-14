@@ -31,6 +31,10 @@
     
     [self.view addSubview:webView];
     
+    if (self.b == YES)
+    {
+        self.favButton.tintColor = [UIColor colorWithRed:0.988 green:0.703 blue:0.191 alpha:1];
+    }
     
     
 }
@@ -72,13 +76,16 @@
     //[ProgressHUD show:@"Favorited"];
     if (self.b == NO)
     {
-    FavArticle *favArticle = [NSEntityDescription insertNewObjectForEntityForName:@"FavArticle" inManagedObjectContext:self.cdStack.managedObjectContext];
-    favArticle.url = self.siteUrl;
-    favArticle.artDescrip = self.desString;
-    favArticle.artName = self.nameString;
-    favArticle.source = self.sourceString;
-    [self saveCoreDataUpdates];
-    [ProgressHUD showSuccess:@"Favorited"];
+        FavArticle *favArticle = [NSEntityDescription insertNewObjectForEntityForName:@"FavArticle" inManagedObjectContext:self.cdStack.managedObjectContext];
+        favArticle.url = self.siteUrl;
+        favArticle.artDescrip = self.desString;
+        favArticle.artName = self.nameString;
+        favArticle.source = self.sourceString;
+        [self saveCoreDataUpdates];
+        [ProgressHUD showSuccess:@"Favorited"];
+       // self.b = YES;
+        //[self.favButton setEnabled:NO];
+        self.favButton.tintColor = [UIColor colorWithRed:0.988 green:0.703 blue:0.191 alpha:1];
      }
     else
     {
@@ -86,6 +93,9 @@
         [self.cdStack.managedObjectContext deleteObject:self.article];
         [self saveCoreDataUpdates];
         [self dismissViewControllerAnimated:YES completion:nil];
+        self.favButton.tintColor = [UIColor colorWithRed:0.718 green:0.742 blue:0.718 alpha:1];
+
+        //self.b = NO;
     }
    
     

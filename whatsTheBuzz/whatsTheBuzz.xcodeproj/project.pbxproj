@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5A2D00321B03A5BB00932742 /* FavResultCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2D00311B03A5BB00932742 /* FavResultCellBackground.m */; };
 		5A3B03AD1B00E20C00CFFF0C /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5A3B03B01B00E3DA00CFFF0C /* FavModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03AE1B00E3DA00CFFF0C /* FavModel.xcdatamodeld */; };
 		5A3B03B91B00EB8D00CFFF0C /* _FavArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B03B81B00EB8D00CFFF0C /* _FavArticle.m */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A2D00301B03A5BB00932742 /* FavResultCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavResultCellBackground.h; sourceTree = "<group>"; };
+		5A2D00311B03A5BB00932742 /* FavResultCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavResultCellBackground.m; sourceTree = "<group>"; };
 		5A3B03AB1B00E20C00CFFF0C /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "../../../../Downloads/CoreDataStack-master/source/CoreDataStack.h"; sourceTree = "<group>"; };
 		5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "../../../../Downloads/CoreDataStack-master/source/CoreDataStack.m"; sourceTree = "<group>"; };
 		5A3B03AF1B00E3DA00CFFF0C /* FavModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavModel.xcdatamodel; sourceTree = "<group>"; };
@@ -192,9 +195,9 @@
 		5A3B03AA1B00E1DB00CFFF0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5AFB72061AEFECEE006C0CB4 /* STTwitter */,
 				5A3B03AB1B00E20C00CFFF0C /* CoreDataStack.h */,
 				5A3B03AC1B00E20C00CFFF0C /* CoreDataStack.m */,
-				5AFB72061AEFECEE006C0CB4 /* STTwitter */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -238,6 +241,8 @@
 				5A5F24D71AFBA997001C2C99 /* CustomCellBackground.m */,
 				5AB8C56F1B0248E90061E309 /* CstmResultCellBackground.h */,
 				5AB8C5701B0248E90061E309 /* CstmResultCellBackground.m */,
+				5A2D00301B03A5BB00932742 /* FavResultCellBackground.h */,
+				5A2D00311B03A5BB00932742 /* FavResultCellBackground.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				5AFB72301AEFECEE006C0CB4 /* STTwitterOSRequest.m in Sources */,
 				5A3B03B01B00E3DA00CFFF0C /* FavModel.xcdatamodeld in Sources */,
 				5AFB724B1AF29C3D006C0CB4 /* WebsiteTableViewCell.m in Sources */,
+				5A2D00321B03A5BB00932742 /* FavResultCellBackground.m in Sources */,
 				5AFB72291AEFECEE006C0CB4 /* NSString+STTwitter.m in Sources */,
 				5AFB722A1AEFECEE006C0CB4 /* STHTTPRequest+STTwitter.m in Sources */,
 				5AFB71D91AEE8712006C0CB4 /* AppDelegate.m in Sources */,

@@ -10,6 +10,7 @@
 
 @interface TrendTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *TrendLabel;
-@property (strong, nonatomic) IBOutlet UIView *cellColorView;
+@property (strong, nonatomic) IBOutlet UIView *colorView;
+@property (strong, nonatomic) IBOutlet UILabel *sourceLabel;
 
 @end

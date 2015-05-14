@@ -22,11 +22,19 @@
 
 @interface TrendsTableViewController ()
 {
+    int k;
     int i;
     BOOL r;
+    BOOL go;
+    BOOL y;
+    BOOL t;
 }
 
 @property (nonatomic) NSMutableArray *trending;
+@property (nonatomic) NSMutableArray *indexPathArray;
+@property (nonatomic) NSMutableArray *googleTrendsArray;
+@property (nonatomic) NSMutableArray *yahooTrendsArray;
+@property (nonatomic) NSMutableArray *twitterTrendsArray;
 @property (nonatomic) NSString *queryStrng;
 
 
@@ -37,22 +45,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    
-//    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-//    loginButton.center = self.view.center;
-//    [self.view addSubview:loginButton];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    UIImage *logo = [UIImage imageNamed:@"WTB_LOGO"];
+    UIView *headerView = [[UIView alloc] init];
+    headerView.frame = CGRectMake(0, 0, 600, 100);
     
-//    SWRevealViewController *revealViewController = self.revealViewController;
-//    if (revealViewController)
-//    {
-//        [self.sideBarButton setTarget:self.revealViewController];
-//        [self.sideBarButton setAction:@selector(revealToggle: )];
-//        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-//    }
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:logo];
+    imgView.frame = CGRectMake(1, 0, 300, 300);
+    imgView.contentMode = UIViewContentModeScaleAspectFit;
     
+    [headerView addSubview:imgView];
+    
+    self.navigationItem.titleView = headerView;
+  //  self.title  = @"what'sTheBuzz";
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.988 green:0.703 blue:0.191 alpha:1];
+
+    self.yahooTrendsArray = [[NSMutableArray alloc] init];
+    self.googleTrendsArray = [[NSMutableArray alloc] init];
+    self.twitterTrendsArray = [[NSMutableArray alloc] init];
     self.trending = [[NSMutableArray alloc] init];
+    self.indexPathArray = [[NSMutableArray alloc] init];
     
     r = NO;
+    go = NO;
+    t = NO;
+    y = NO;
     
     TwitterTrends *trendy = [[TwitterTrends alloc] init];
     [trendy twitterGet];
@@ -64,8 +81,8 @@
     [NetworkManager sharedNetworkManager].delegate = self;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
-    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor blackColor];
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
@@ -100,80 +117,37 @@
 {
     TrendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendCell" forIndexPath:indexPath];
     
-    if (![cell.backgroundView isKindOfClass:[CustomCellBackground class]])
+    if (indexPath.row % 2 == 0)
     {
-        cell.backgroundView = [[CustomCellBackground alloc] init];
+        cell.backgroundColor = [UIColor colorWithRed:0.96 green:0.97 blue:0.96 alpha:1];
     }
-    
-    if (![cell.selectedBackgroundView isKindOfClass:[CustomCellBackground class]])
+    else
     {
-        cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+        cell.backgroundColor = [UIColor colorWithRed:0.933 green:0.949 blue:0.976 alpha:1];
     }
-    
-   // [self shuffle:self.trending];
-    
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = cell.bounds;
-//    gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:.1 green:1 blue:.5 alpha:1], (id)[[UIColor colorWithRed:1 green:1 blue:.29 alpha:1]CGColor], nil];
-//    [cell.layer addSublayer:gradient];
-//    
     
     TrendObject *object = self.trending[indexPath.row];
 
    cell.TrendLabel.text = object.trendString;
     if (object.i == 1)
     {
-        cell.cellColorView.backgroundColor = [UIColor blueColor];
+        cell.colorView.backgroundColor = [UIColor colorWithRed:.2 green:0.65 blue:0.92 alpha:1];
+        cell.sourceLabel.text = @"Twitter";
     }
     else if (object.i == 2)
     {
-        cell.cellColorView.backgroundColor = [UIColor redColor];
+        cell.colorView.backgroundColor = [UIColor colorWithRed:0.67 green:0.277 blue:0.78 alpha:1];
+        cell.sourceLabel.text = @"Yahoo";
     }
     else if (object.i == 3)
     {
-        cell.cellColorView.backgroundColor = [UIColor greenColor];
+        cell.colorView.backgroundColor = [UIColor colorWithRed:0.754 green:0.29 blue:0.308 alpha:1];
+        cell.sourceLabel.text = @"Google";
+        
     }
    
-    
     return cell;
-    
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
@@ -198,10 +172,8 @@
                                    options:0
                                    range:NSMakeRange(0, string.length)
                                    withTemplate:@" $1$2"];
-            NSLog(@"Changed '%@' -> '%@'", string, newString);
             query.trendString = newString;
         }
-        NSLog(@"%@", query.trendString);
         resultsVC.queryString = query.trendString;
         
         
@@ -211,9 +183,6 @@
         ResultsTableViewController *resultsVC = [segue destinationViewController];
         resultsVC.b = YES;
     }
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 
@@ -221,70 +190,67 @@
 
 -(void)addTwitterTrends:(NSMutableArray *)twittTrends
 {
-    NSLog(@"%@",twittTrends);
+   // NSIndexPath *indexpath = [[NSIndexPath alloc] init];
     
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-//    for (i=1; i<twittTrends.count; i++)
-//    {
-//        TrendObject *tObj = [[TrendObject alloc] init];
-//        tObj.trendString = twittTrends[i];
-//        tObj.i = 1;
-//        int randomRow = arc4random() % [self.trending count] - 1;
+ //   NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+    for (i=0; i<twittTrends.count; i++)
+    {
+        TrendObject *tObj = [[TrendObject alloc] init];
+        tObj.trendString = twittTrends[i];
+        tObj.i = 1;
+        [self.twitterTrendsArray addObject:tObj];
+//        int randomRow;
+//        if (!self.trending || self.trending.count < 2)
+//        {
+//            randomRow = 0;
+//        }
+//        else
+//        {
+//            randomRow = arc4random_uniform([self.trending count]);
+//        }
+//        k = 0;
+//        [self.trending insertObject:tObj atIndex:k];
+//        indexpath = [NSIndexPath indexPathForRow:k inSection:0];
+        
 //        [self.trending insertObject:tObj atIndex:randomRow];
-//        NSIndexPath *indexpath = [NSIndexPath indexPathWithIndex:randomRow];
-//        [indexPaths addObject:indexpath];
-//    }
-  //  [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//        indexpath = [NSIndexPath indexPathForRow:randomRow inSection:0];
+        //[self.indexPathArray addObject:indexpath];
+//        [self.tableView insertRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        k  = k + 3;
+        
+    }
+   // [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 
-    //[self.tableView reloadData];
+//    [self.tableView reloadData];
+    t = YES;
+    [self fillTableView];
 }
 
 -(void)addYahooTrends:(NSMutableArray *)yahooTrends
 {
-    NSLog(@"%@", yahooTrends);
-    
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-//    for (i=1; i<yahooTrends.count; i++)
-//    {
-//        TrendObject *tObj = [[TrendObject alloc] init];
-//        tObj.trendString = yahooTrends[i];
-//        tObj.i = 2;
-//        int randomRow = arc4random() % [self.trending count] - 1;
-//        [self.trending insertObject:tObj atIndex:randomRow];
-//        NSIndexPath *indexpath = [NSIndexPath indexPathWithIndex:randomRow];
-//        [indexPaths addObject:indexpath];
-//    }
-//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    //[self.tableView reloadData];
-    
+    for (i=0; i<yahooTrends.count; i++)
+    {
+        TrendObject *tObj = [[TrendObject alloc] init];
+        tObj.trendString = yahooTrends[i];
+        tObj.i = 2;
+        [self.yahooTrendsArray addObject:tObj];
+    }
+    y = YES;
+    [self fillTableView];
 }
 
 -(void)addGoogleTrends:(NSMutableArray *)googleTrends
 {
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-    for (i=1; i<googleTrends.count; i++)
+
+    for (i=0; i<googleTrends.count; i++)
     {
         TrendObject *tObj = [[TrendObject alloc] init];
         tObj.trendString = googleTrends[i];
         tObj.i = 3;
-        int randomRow;
-        if (!self.trending || self.trending.count < 2)
-        {
-            randomRow = 0;
-        }
-        else
-        {
-            randomRow = arc4random_uniform([self.trending count] - 1);
-            NSLog(@"added to row %d", randomRow );
-        }
-        [self.trending insertObject:tObj atIndex:randomRow];
-        NSIndexPath *indexpath = [[NSIndexPath alloc] init];
-        indexpath = [NSIndexPath indexPathWithIndex:randomRow];
-        [indexPaths addObject:indexpath];
+        [self.googleTrendsArray addObject:tObj];
     }
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-
-    //[self.tableView reloadData];
+    go = YES;
+    [self fillTableView];
 }
 
 - (void)shuffle:(NSMutableArray *)mutArray
@@ -307,6 +273,21 @@
      trendy.delegate = self;
     [self.tableView reloadData];
       [self.refreshControl endRefreshing];
+}
+
+- (void)fillTableView
+{
+    if (go == YES  && y == YES && t == YES)
+    {
+        for (k = 0; k < 10; k++)
+        {
+            [self.trending addObject:self.twitterTrendsArray[k]];
+            [self.trending addObject:self.googleTrendsArray[k]];
+            [self.trending addObject:self.yahooTrendsArray[k]];
+        }
+        [self.tableView reloadData];
+    }
+    
 }
 
 

@@ -12,8 +12,10 @@
 #import "Bing.h"
 #import "CustomCellBackground.h"
 #import "CstmResultCellBackground.h"
+#import "FavResultCellBackground.h"
 #import "CoreDataStack.h"
 #import "FavArticle.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ResultsTableViewController ()
 {
@@ -95,7 +97,6 @@
 {
     
     
-    NSLog(@"%@", websites);
     NSDictionary *d = [websites objectForKey:@"d"];
     NSArray *results = [d objectForKey:@"results"];
     
@@ -144,24 +145,44 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WebsiteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WebsiteCell" forIndexPath:indexPath];
     
-    if (![cell.backgroundView isKindOfClass:[CstmResultCellBackground class]])
-    {
-        cell.backgroundView = [[CstmResultCellBackground alloc] init];
-    }
-    
-    if (![cell.selectedBackgroundView isKindOfClass:[CstmResultCellBackground class]])
-    {
-        cell.selectedBackgroundView = [[CstmResultCellBackground alloc] init];
-    }
     
     if (self.b == NO)
     {
+//        if (![cell.backgroundView isKindOfClass:[CstmResultCellBackground class]])
+//        {
+//            cell.backgroundView = [[CstmResultCellBackground alloc] init];
+//        }
+//        
+//        if (![cell.selectedBackgroundView isKindOfClass:[CstmResultCellBackground class]])
+//        {
+//            cell.selectedBackgroundView = [[CstmResultCellBackground alloc] init];
+//        }
+        
         cell.titleLabel.text = self.results[indexPath.row];
         cell.descripLabel.text = self.descripResults[indexPath.row];
         cell.siteNameLabel.text = self.sourceResults[indexPath.row];
+        cell.siteNameLabel.backgroundColor = [UIColor clearColor];
+        cell.siteNameLabel.layer.cornerRadius = 5;
+        cell.siteNameLabel.layer.borderWidth = 1;
+        
+        
+        
     }
+    
     else if (self.b == YES)
     {
+//        if (![cell.backgroundView isKindOfClass:[FavResultCellBackground class]])
+//        {
+//            cell.backgroundView = [[FavResultCellBackground alloc] init];
+//        }
+//        
+//        if (![cell.selectedBackgroundView isKindOfClass:[FavResultCellBackground class]])
+//        {
+//            cell.selectedBackgroundView = [[FavResultCellBackground alloc] init];
+//        }
+    
+   
+    
         FavArticle *article = items[indexPath.row];
         cell.titleLabel.text = article.artName;
         cell.descripLabel.text = article.artDescrip;
@@ -297,6 +318,7 @@
         NSString *url = [data4 objectForKey:@"Url"];
         [self.urlResults addObject:url];
     }
+    
     
     [self.tableView reloadData];
     

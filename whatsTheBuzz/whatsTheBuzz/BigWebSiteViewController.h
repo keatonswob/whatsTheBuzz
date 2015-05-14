@@ -19,5 +19,6 @@
 @property (nonatomic) NSString *sourceString;
 @property (nonatomic) BOOL b;
 @property (nonatomic) FavArticle *article;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *favButton;
 
 @end
