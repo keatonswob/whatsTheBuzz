@@ -48,10 +48,10 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIImage *logo = [UIImage imageNamed:@"WTB_LOGO"];
     UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, 600, 100);
+    headerView.frame = CGRectMake(0, 0, 250, 150);
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:logo];
-    imgView.frame = CGRectMake(1, 0, 300, 300);
+    imgView.frame = CGRectMake(1, 0, 247, 150);
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     
     [headerView addSubview:imgView];
@@ -73,6 +73,7 @@
     
     TwitterTrends *trendy = [[TwitterTrends alloc] init];
     [trendy twitterGet];
+    [trendy  searchTwitter:@"biketoworkday2015"];
     
     trendy.delegate = self;
     
@@ -86,6 +87,8 @@
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
                   forControlEvents:UIControlEventValueChanged];
+    
+    
     
   
     // Uncomment the following line to preserve selection between presentations.
@@ -289,6 +292,8 @@
     }
     
 }
+
+
 
 
 

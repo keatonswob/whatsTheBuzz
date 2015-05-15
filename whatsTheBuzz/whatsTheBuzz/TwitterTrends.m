@@ -41,7 +41,8 @@
 {
     STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@"a9lK02NkFKAdSOZwvdpLxfSuX" consumerSecret:@"wV7nickdvVQBrqv5Ws1CeakK92REJVCPcUlCTQHPtG7JUfgTui"];
     [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID)
-     {[twitter getTrendsForWOEID:@"23424977" excludeHashtags:0 successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trend)
+     {
+         [twitter getTrendsForWOEID:@"23424977" excludeHashtags:0 successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trend)
        {
            self.trending = [NSMutableArray arrayWithArray:trend];
            NSLog(@"%@", self.trending);
@@ -71,6 +72,28 @@
     
     [self.delegate addTwitterTrends:self.theTrends];
     
+}
+
+- (void)searchTwitter:(NSString *)query
+{
+    STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@"a9lK02NkFKAdSOZwvdpLxfSuX" consumerSecret:@"wV7nickdvVQBrqv5Ws1CeakK92REJVCPcUlCTQHPtG7JUfgTui"];
+    NSString *searchQuery = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID)
+    {
+        [twitter getSearchTweetsWithQuery:searchQuery successBlock:^(NSDictionary *searchMetadata, NSArray *statuses)
+         {
+             NSLog(@"Search Data: %@", searchMetadata);
+             NSLog(@"\n\n Status: %@", statuses);
+         }
+     errorBlock:^(NSError *error)
+         {
+        NSLog(@"Error : %@", error);
+         }];
+    }errorBlock:^(NSError *error)
+    {
+        NSLog(@"-- error %@", error);
+    }];
 }
 
 

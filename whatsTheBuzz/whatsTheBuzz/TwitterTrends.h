@@ -20,5 +20,7 @@
 
 
 -(void)twitterGet;
+- (void)searchTwitter:(NSString *)query;
+
 
 @end

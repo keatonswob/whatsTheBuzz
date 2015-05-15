@@ -148,22 +148,14 @@
     
     if (self.b == NO)
     {
-//        if (![cell.backgroundView isKindOfClass:[CstmResultCellBackground class]])
-//        {
-//            cell.backgroundView = [[CstmResultCellBackground alloc] init];
-//        }
-//        
-//        if (![cell.selectedBackgroundView isKindOfClass:[CstmResultCellBackground class]])
-//        {
-//            cell.selectedBackgroundView = [[CstmResultCellBackground alloc] init];
-//        }
+
         
         cell.titleLabel.text = self.results[indexPath.row];
         cell.descripLabel.text = self.descripResults[indexPath.row];
         cell.siteNameLabel.text = self.sourceResults[indexPath.row];
         cell.siteNameLabel.backgroundColor = [UIColor clearColor];
-        cell.siteNameLabel.layer.cornerRadius = 5;
-        cell.siteNameLabel.layer.borderWidth = 1;
+       // cell.siteNameLabel.layer.cornerRadius = 5;
+       // cell.siteNameLabel.layer.borderWidth = 1;
         
         
         
@@ -171,15 +163,7 @@
     
     else if (self.b == YES)
     {
-//        if (![cell.backgroundView isKindOfClass:[FavResultCellBackground class]])
-//        {
-//            cell.backgroundView = [[FavResultCellBackground alloc] init];
-//        }
-//        
-//        if (![cell.selectedBackgroundView isKindOfClass:[FavResultCellBackground class]])
-//        {
-//            cell.selectedBackgroundView = [[FavResultCellBackground alloc] init];
-//        }
+
     
    
     
