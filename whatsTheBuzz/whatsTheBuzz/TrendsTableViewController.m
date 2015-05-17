@@ -45,6 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIImage *logo = [UIImage imageNamed:@"WTB_LOGO"];
     UIView *headerView = [[UIView alloc] init];
@@ -96,6 +98,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -43,7 +43,7 @@
     
     NSString *market = @"'en-us'";
     
-    NSInteger top = 4;
+    NSInteger top = 8;
     
     NSMutableString *fullUri = [NSMutableString stringWithCapacity:256];
     
@@ -125,7 +125,7 @@
         NSLog(@"Download Successful.");
         NSDictionary *userInfo = [NSJSONSerialization JSONObjectWithData:recieveData options:0 error:nil];
         //[self.results addObject:userInfo];
-        
+        NSLog(@"%@", userInfo);
         [self.delegate getResults:userInfo];
         //[self cancel];
     }
@@ -143,7 +143,7 @@
     
     NSString *market = @"'en-us'";
     
-    NSInteger top = 6;
+    NSInteger top = 8;
     
     NSMutableString *fullUri = [NSMutableString stringWithCapacity:256];
     
