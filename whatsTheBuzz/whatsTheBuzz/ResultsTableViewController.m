@@ -107,16 +107,48 @@
         
     }
     
-    if (whichMethod == NO)
+    if (results.count != 0)
     {
-        [self parseNews:results];
+    
+        if (whichMethod == NO)
+        {
+            [self parseNews:results];
+        }
+        else
+        {
+           [self parseWeb:results];
+        }
     }
     else
     {
-       [self parseWeb:results];
-    }
-    
+        NSString *alertTitle = [NSString stringWithFormat:@"No Results Found"];
 
+        NSString *alertMessage = @"Try different trend";
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:alertTitle
+                                              message:alertMessage
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             
+                                                             
+                                                         }];
+        
+        UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action) {
+                                                                
+                                                                
+                                                                
+                                                            }];
+        [alertController addAction:okAction];
+        [alertController addAction:retryAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+;
+    }
+   
 }
 
 #pragma mark - Table view data source
@@ -307,6 +339,11 @@
     [self.tableView reloadData];
     
  
+}
+
+-(void)notifErrorGo
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"noResultsFound" object:nil];
 }
 
 

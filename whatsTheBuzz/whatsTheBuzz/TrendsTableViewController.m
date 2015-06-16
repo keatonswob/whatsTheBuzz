@@ -50,10 +50,12 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIImage *logo = [UIImage imageNamed:@"WTB_LOGO"];
     UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, 250, 150);
+  headerView.frame = CGRectMake(0, 0, 225, 115);
+//    headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/4.25);
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:logo];
-    imgView.frame = CGRectMake(1, 0, 247, 150);
+    imgView.frame = CGRectMake(0, 0, 205, 115);
+  //  imgView.center = self.view.center;
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     
     [headerView addSubview:imgView];
@@ -75,7 +77,7 @@
     
     TwitterTrends *trendy = [[TwitterTrends alloc] init];
     [trendy twitterGet];
-    [trendy  searchTwitter:@"biketoworkday2015"];
+  //  [trendy  searchTwitter:@"biketoworkday2015"];
     
     trendy.delegate = self;
     
@@ -91,7 +93,7 @@
                   forControlEvents:UIControlEventValueChanged];
     
     
-    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWithError:) name:@"showWithError" object:nil];
   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -209,29 +211,10 @@
         tObj.trendString = twittTrends[i];
         tObj.i = 1;
         [self.twitterTrendsArray addObject:tObj];
-//        int randomRow;
-//        if (!self.trending || self.trending.count < 2)
-//        {
-//            randomRow = 0;
-//        }
-//        else
-//        {
-//            randomRow = arc4random_uniform([self.trending count]);
-//        }
-//        k = 0;
-//        [self.trending insertObject:tObj atIndex:k];
-//        indexpath = [NSIndexPath indexPathForRow:k inSection:0];
-        
-//        [self.trending insertObject:tObj atIndex:randomRow];
-//        indexpath = [NSIndexPath indexPathForRow:randomRow inSection:0];
-        //[self.indexPathArray addObject:indexpath];
-//        [self.tableView insertRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        k  = k + 3;
+
         
     }
-   // [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-
-//    [self.tableView reloadData];
+   
     t = YES;
     [self fillTableView];
 }
@@ -300,6 +283,36 @@
     
 }
 
+-(void)showWithError:(NSNotification *)errorNotification
+{
+    NSError *error = [errorNotification.userInfo objectForKey:@"error"];
+    
+    NSString *alertTitle = [NSString stringWithFormat:@"%@", [error localizedDescription]];
+    NSString *alertMessage = @"Click Retry to try again";
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:alertTitle
+                                          message:alertMessage
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
+                                                         
+                                                         
+                                                     }];
+    
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            
+                                                          
+                                                            
+                                                        }];
+    [alertController addAction:okAction];
+    [alertController addAction:retryAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
 
 
 

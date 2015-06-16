@@ -122,6 +122,11 @@ static NSString *yahooUrl = @"https://www.kimonolabs.com/api/bzfdj3t0?apikey=ykn
         
         
     }
+    if (error)
+    {
+        NSDictionary *errorDic = @{@"error": error};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showWithError" object:nil userInfo:errorDic];
+    }
     
 }
 
